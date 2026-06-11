@@ -70,8 +70,8 @@ hermes-agent-cdp eval '({title: document.title, url: location.href})'
 
 - Remote configured: `origin https://github.com/CBaen/hermes-tasks`.
 - Initial push succeeded at 2026-06-11T16:44:49-06:00: remote `main` reached `70c83bbb5c746c84ab6c77d1659e25ee87b4fe23`.
+- Final publish-success commit reached remote `main` as `4cc409d8712561f23c5a9a6b082e5edac769271b`.
 - Important auth detail: Hermes terminal default `$HOME` is `/home/guidingl/.hermes/profiles/banebook/home` and is not logged into GitHub. GitHub auth is available under the real user home. Use `HOME=/home/guidingl git ...` or `HOME=/home/guidingl gh ...` for GitHub operations from this Hermes session.
-- Final publish-status commit is expected after this handoff update.
 
 ## Remaining work
 

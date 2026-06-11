@@ -20,7 +20,7 @@ Give every agent a fast view of active lanes, write scopes, owners, and handoff 
 
 | Lane | Owner | Write scope | Handoff | Status | Last update |
 |---|---|---|---|---|---|
-| publish-session-state | current Hermes session | root docs, verifier manifest, git metadata only | `HANDOFF.md` | Pushed; final status commit in progress | 2026-06-11T16:44:49-06:00 |
+| publish-session-state | current Hermes session | root docs, verifier manifest, git metadata only | `HANDOFF.md` | Complete; pushed to GitHub | 2026-06-11T17:03:04-06:00 |
 
 ## Coordination Notes
 
@@ -35,8 +35,8 @@ Give every agent a fast view of active lanes, write scopes, owners, and handoff 
 
 TS:2026-06-11T16:06:12-06:00 | Check:docs consolidated before final validation/commit | Confidence:high
 
-- Status: Initial push succeeded; final status commit in progress.
-- Current focus: push this final publish-status update.
+- Status: Complete; final publish status pushed.
+- Current focus: none.
 - Latest changed files: `HANDOFF.md`, `PROJECT-STATUS.md`, `hermes-tasks-queue.md`, `hermes-tasks-decisions.md`, `agent-lanes/BOARD.md`.
 - Latest validation: project shape ok=true; new capability roots ok=true; browser lanes verified after relaunch.
 - Blockers: none. Use `HOME=/home/guidingl` for GitHub operations from Hermes.

@@ -19,6 +19,7 @@
 
 ## Done
 
+- 2026-06-11T17:03:04-06:00: Cleaned stale publish-status wording; remote main already verified at `4cc409d8712561f23c5a9a6b082e5edac769271b` before this cleanup commit.
 - 2026-06-11T16:44:49-06:00: Resolved GitHub auth path by using `HOME=/home/guidingl`; pushed `main` to `origin` with remote ref `70c83bbb5c746c84ab6c77d1659e25ee87b4fe23` before final status commit.
 - 2026-06-11T16:21:24-06:00: Created local commit `f5033b8e5edcc5fa2cf01fcedd1a2f40c137c881`; later pushed successfully once real-user HOME GitHub auth was used.
 - 2026-06-11T16:06:12-06:00: Added AI-facing handoff, lessons learned, global decisions, lane handoff, and LibreOffice artifact documentation for this session.

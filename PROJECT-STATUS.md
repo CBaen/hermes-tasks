@@ -12,10 +12,10 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 
 ## Current state
 
-- Stage: Published to GitHub; final publish-status commit in progress.
+- Stage: Published to GitHub.
 - Branch: `main` tracking `origin/main`.
 - Remote: `https://github.com/CBaen/hermes-tasks`.
-- First pushed commit: `70c83bbb5c746c84ab6c77d1659e25ee87b4fe23`.
+- Published commit verified on remote: `4cc409d8712561f23c5a9a6b082e5edac769271b`.
 - Current source of truth: `README.md`, `HANDOFF.md`, `LESSONS-LEARNED.md`, `GLOBAL-DECISIONS.md`, `AGENTS.md`, queue/index/decisions docs, `agent-lanes/BOARD.md`, `verifier-manifest.json`, baseline `capabilities/INDEX.md`, and sibling capability roots.
 - Main active work: Maintain the persistent Hermes task scaffold and verified connection/control capabilities.
 - Current blockers: None for publish. Auth detail for future agents: use `HOME=/home/guidingl` for GitHub CLI/git operations from Hermes because default Hermes `$HOME` is not logged in.
@@ -76,4 +76,4 @@ python /home/guidingl/projects/capabilities-framework/tools/validate_capability_
 
 ## Next safest move
 
-After this final status commit is pushed, add only actually verified new capabilities: notification/messaging first if a platform is connected; Wardenclyffe bridge only after helper commands are present and tested.
+Add only actually verified new capabilities: notification/messaging first if a platform is connected; Wardenclyffe bridge only after helper commands are present and tested.
