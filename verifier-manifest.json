@@ -1,0 +1,170 @@
+{
+  "schema_version": "verifier-manifest/v1",
+  "project": "Hermes Tasks",
+  "updated": "2026-06-11",
+  "run_policy": "manual_only",
+  "policy": {
+    "purpose": "Declare verifier bundles and their minimum sufficient proof tier.",
+    "default_rule": "Use the lowest tier that proves the claim; tier labels are not pass/fail evidence.",
+    "execution_rule": "This manifest is not a runner. Follow project AGENTS.md, release gates, account checks, and approval rules before running commands."
+  },
+  "tiers": {
+    "tier_0_static": "Reads files or metadata only.",
+    "tier_1_local_fast": "Local lint, parser, unit, or shape checks with no external service.",
+    "tier_2_local_integrated": "Local integration checks that may require local app services or local test records.",
+    "tier_3_staging_or_private": "Staging, private platform, sandbox, or authenticated non-live checks.",
+    "tier_4_live_or_external": "Live, customer-facing, publish, billing, public account, marketplace, deployment, or other external-impact gates."
+  },
+  "bundles": [
+    {
+      "id": "project-shape-check",
+      "tier": "tier_1_local_fast",
+      "graduation_stage": "verifier_backed",
+      "graduation_status": "candidate",
+      "command": "python tools/validate_project_shape.py --project ../hermes-tasks --project-slug hermes-tasks",
+      "cwd": "../capabilities-framework",
+      "scope": "Checks that this persistent Hermes task scaffold has the expected project files, lane board, verifier manifest, and capability root pointers.",
+      "environment": "local",
+      "mutation": "none",
+      "approval_required": "no, if run locally on Banebook",
+      "requires_explicit_approval": false,
+      "runs_automatically": false,
+      "evidence_artifact": "terminal output in the active agent session or a future workstream handoff",
+      "capability_refs": [
+        "capabilities/recipes/verifier-tier-selection.md"
+      ],
+      "risk_triggers": [
+        "raise the tier if this starts touching external accounts, messaging delivery, live services, or another Hermes profile"
+      ],
+      "proves": [
+        "the local project scaffold shape matches the current project validator"
+      ],
+      "what_it_does_not_prove": "It does not prove any external task delivery, remote host setup, or production system behavior."
+    },
+    {
+      "id": "project-capability-graph-check",
+      "tier": "tier_1_local_fast",
+      "graduation_stage": "verifier_backed",
+      "graduation_status": "candidate",
+      "command": "python tools/validate_capability_graph.py --root ../hermes-tasks/capabilities",
+      "cwd": "../capabilities-framework",
+      "scope": "Checks the project-local capability root graph shape.",
+      "environment": "local",
+      "mutation": "none",
+      "approval_required": "no, if run locally on Banebook",
+      "requires_explicit_approval": false,
+      "runs_automatically": false,
+      "evidence_artifact": "terminal output in the active agent session or a future workstream handoff",
+      "capability_refs": [
+        "capabilities/recipes/verifier-tier-selection.md"
+      ],
+      "risk_triggers": [
+        "raise the tier if capability validation starts reading external systems or private runtime state"
+      ],
+      "proves": [
+        "the project-local capability root has no validator errors"
+      ],
+      "what_it_does_not_prove": "It does not prove that every referenced external capability or machine-level root is current."
+    },
+    {
+      "id": "connections-control-capability-graph-check",
+      "tier": "tier_1_local_fast",
+      "graduation_stage": "verifier_backed",
+      "graduation_status": "candidate",
+      "command": "python tools/validate_capability_graph.py --root ../hermes-tasks/capabilities-connections-control --json",
+      "cwd": "../capabilities-framework",
+      "scope": "Checks the project connection/control capability root graph shape, including browser/CDP and agent-only browser cards.",
+      "environment": "local",
+      "mutation": "none",
+      "approval_required": "no, if run locally on Banebook",
+      "requires_explicit_approval": false,
+      "runs_automatically": false,
+      "evidence_artifact": "terminal output in the active agent session or a future lane handoff",
+      "capability_refs": [
+        "capabilities-connections-control/INDEX.md"
+      ],
+      "risk_triggers": [
+        "raise the tier if validation starts reading private browser/session state or external accounts"
+      ],
+      "proves": [
+        "the connection/control capability root has no validator errors"
+      ],
+      "what_it_does_not_prove": "It does not prove live account access or authority to perform external actions."
+    },
+    {
+      "id": "collaboration-autonomy-capability-graph-check",
+      "tier": "tier_1_local_fast",
+      "graduation_stage": "verifier_backed",
+      "graduation_status": "candidate",
+      "command": "python tools/validate_capability_graph.py --root ../hermes-tasks/capabilities-collaboration-autonomy --json",
+      "cwd": "../capabilities-framework",
+      "scope": "Checks the collaboration/autonomy capability root graph shape.",
+      "environment": "local",
+      "mutation": "none",
+      "approval_required": "no, if run locally on Banebook",
+      "requires_explicit_approval": false,
+      "runs_automatically": false,
+      "evidence_artifact": "terminal output in the active agent session or a future lane handoff",
+      "capability_refs": [
+        "capabilities-collaboration-autonomy/INDEX.md"
+      ],
+      "risk_triggers": [
+        "raise the tier if this starts changing active approval policy without user acceptance"
+      ],
+      "proves": [
+        "the collaboration/autonomy capability root has no validator errors"
+      ],
+      "what_it_does_not_prove": "It does not prove the user has accepted every proposed permission tier."
+    },
+    {
+      "id": "agent-infrastructure-capability-graph-check",
+      "tier": "tier_1_local_fast",
+      "graduation_stage": "verifier_backed",
+      "graduation_status": "candidate",
+      "command": "python tools/validate_capability_graph.py --root ../hermes-tasks/capabilities-agent-infrastructure --json",
+      "cwd": "../capabilities-framework",
+      "scope": "Checks the agent-infrastructure capability root graph shape.",
+      "environment": "local",
+      "mutation": "none",
+      "approval_required": "no, if run locally on Banebook",
+      "requires_explicit_approval": false,
+      "runs_automatically": false,
+      "evidence_artifact": "terminal output in the active agent session or a future lane handoff",
+      "capability_refs": [
+        "capabilities-agent-infrastructure/INDEX.md"
+      ],
+      "risk_triggers": [
+        "raise the tier if validation starts reading secrets or runtime caches"
+      ],
+      "proves": [
+        "the agent-infrastructure capability root has no validator errors"
+      ],
+      "what_it_does_not_prove": "It does not prove remote services, account access, or future launcher state."
+    },
+    {
+      "id": "agent-only-browser-health-check",
+      "tier": "tier_2_local_integrated",
+      "graduation_stage": "verifier_backed",
+      "graduation_status": "candidate",
+      "command": "hermes-agent-brave-status && hermes-agent-cdp eval '({title: document.title, url: location.href})'",
+      "cwd": ".",
+      "scope": "Checks that the local agent-only Brave profile is running on CDP port 9223 and can read current page state.",
+      "environment": "Banebook local desktop session",
+      "mutation": "read-only if the browser is already running; launching it is a local reversible GUI process",
+      "approval_required": "no for status/read checks; ask before using desktop-coordinate input or logging into sensitive accounts",
+      "requires_explicit_approval": false,
+      "runs_automatically": false,
+      "evidence_artifact": "terminal output in the active agent session or `agent-lanes/connections-control-HANDOFF.md`",
+      "capability_refs": [
+        "capabilities-connections-control/recipes/agent-only-browser-lane.md"
+      ],
+      "risk_triggers": [
+        "raise tier and ask before using logged-in sensitive accounts, submissions, uploads, or desktop input automation"
+      ],
+      "proves": [
+        "agent-only browser CDP endpoint exists and page state can be read"
+      ],
+      "what_it_does_not_prove": "It does not prove external account login state or approval for any external action."
+    }
+  ]
+}

@@ -4,32 +4,69 @@ Use this for references, research, source maps, and durable pointers. Do not use
 
 ## Source Of Truth
 
+- `README.md`
+- `HANDOFF.md`
+- `LESSONS-LEARNED.md`
+- `GLOBAL-DECISIONS.md`
 - `AGENTS.md`
+- `PROJECT-STATUS.md`
 - `hermes-tasks-queue.md`
 - `hermes-tasks-decisions.md`
-- `PROJECT-STATUS.md`
+- `agent-lanes/BOARD.md`
+- `agent-lanes/connections-control-HANDOFF.md`
+- `verifier-manifest.json`
 - `capabilities/INDEX.md`
+- `capabilities-connections-control/INDEX.md`
+- `capabilities-collaboration-autonomy/INDEX.md`
+- `capabilities-agent-infrastructure/INDEX.md`
 
 ## Start Here
 
-- Capability root lives at `capabilities/`. Open `capabilities/INDEX.md` on demand.
+1. Read `AGENTS.md`.
+2. Read `PROJECT-STATUS.md`.
+3. Read `HANDOFF.md`.
+4. Read `hermes-tasks-queue.md`, `hermes-tasks-decisions.md`, and `GLOBAL-DECISIONS.md`.
+5. Open only the specific capability root needed for the task.
 
-## Research
+## Capability Roots
 
-- 
+- Baseline capability root: `capabilities/INDEX.md`.
+- Connection/control root: `capabilities-connections-control/INDEX.md`.
+- Collaboration/autonomy root: `capabilities-collaboration-autonomy/INDEX.md`.
+- Agent infrastructure root: `capabilities-agent-infrastructure/INDEX.md`.
+- Cross-project pointer note outside repo: `/home/guidingl/Uma/HERMES-MAIN-PROJECT.md`.
 
-## Research
+## Agent Coordination
 
-- 
+- Lane board: `agent-lanes/BOARD.md`
+- Lane handoff template: `agent-lanes/LANE-HANDOFF.template.md`
+- Connections/control lane handoff: `agent-lanes/connections-control-HANDOFF.md`
 
-## Design / Brand
+## Runtime References
 
-- 
+- Active Hermes profile: `/home/guidingl/.hermes/profiles/banebook/`
+- Active Hermes SOUL: `/home/guidingl/.hermes/profiles/banebook/SOUL.md`
+- User/live Brave CDP: `http://127.0.0.1:9222`
+- Agent-only Brave CDP: `http://127.0.0.1:9223`
+- Agent-only profile: `/home/guidingl/.local/share/hermes/agent-brave-profile`
+- Agent browser helpers: `hermes-agent-brave`, `hermes-agent-brave-status`, `hermes-agent-brave-stop`, `hermes-agent-cdp`
 
 ## Technical References
 
-- 
+- Project shape check: `python /home/guidingl/projects/capabilities-framework/tools/validate_project_shape.py --project /home/guidingl/projects/hermes-tasks --project-slug hermes-tasks`
+- Baseline capability graph check: `python /home/guidingl/projects/capabilities-framework/tools/validate_capability_graph.py --root /home/guidingl/projects/hermes-tasks/capabilities --json`
+- Connections/control graph check: `python /home/guidingl/projects/capabilities-framework/tools/validate_capability_graph.py --root /home/guidingl/projects/hermes-tasks/capabilities-connections-control --json`
+- Collaboration/autonomy graph check: `python /home/guidingl/projects/capabilities-framework/tools/validate_capability_graph.py --root /home/guidingl/projects/hermes-tasks/capabilities-collaboration-autonomy --json`
+- Agent infrastructure graph check: `python /home/guidingl/projects/capabilities-framework/tools/validate_capability_graph.py --root /home/guidingl/projects/hermes-tasks/capabilities-agent-infrastructure --json`
+- Agent browser status check: `hermes-agent-brave-status`
+- Agent browser page-state check: `hermes-agent-cdp eval '({title: document.title, url: location.href})'`
+
+## Artifacts
+
+- `artifacts/libreoffice/cheese-poem.odt` - harmless LibreOffice Writer/ODT verification artifact.
+- `artifacts/libreoffice/README.md` - artifact purpose and boundaries.
 
 ## External Links
 
-- 
+- GitHub target requested by user: `https://github.com/CBaen/hermes-tasks`
+- Hermes docs used for browser verification: `https://hermes-agent.nousresearch.com/docs/user-guide/features/browser`
