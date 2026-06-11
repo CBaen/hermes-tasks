@@ -13,14 +13,15 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 ## Start here
 
 1. `AGENTS.md`
-2. `PROJECT-STATUS.md`
-3. `HANDOFF.md`
-4. `hermes-tasks-queue.md`
-5. `hermes-tasks-decisions.md`
-6. `GLOBAL-DECISIONS.md`
-7. `LESSONS-LEARNED.md`
-8. `hermes-tasks-index.md`
-9. `capabilities/INDEX.md`
+2. `SOURCE-OF-TRUTH.md`
+3. `PROJECT-STATUS.md`
+4. `HANDOFF.md`
+5. `hermes-tasks-queue.md`
+6. `hermes-tasks-decisions.md`
+7. `GLOBAL-DECISIONS.md`
+8. `LESSONS-LEARNED.md`
+9. `hermes-tasks-index.md`
+10. `capabilities/INDEX.md`
 
 ## Capability roots
 
@@ -37,7 +38,9 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 - User/live Brave CDP lane: `http://127.0.0.1:9222`
 - Agent-only Brave CDP lane: `http://127.0.0.1:9223`
 - Agent-only Brave profile: `/home/guidingl/.local/share/hermes/agent-brave-profile`
-- Agent-only browser helpers: `hermes-agent-brave`, `hermes-agent-brave-status`, `hermes-agent-brave-stop`, `hermes-agent-cdp`
+- Agent-only browser helpers: `/home/guidingl/.local/bin/hermes-agent-brave*`, `/home/guidingl/.local/bin/hermes-agent-cdp`; use absolute paths unless the Hermes PATH bridge is fixed
+
+- Wardenclyffe helpers: `/home/guidingl/bin/wardenclyffe-*`; use absolute paths unless the Hermes PATH bridge is fixed
 
 ## Publishing target
 

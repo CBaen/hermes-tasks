@@ -5,6 +5,7 @@ Use this for references, research, source maps, and durable pointers. Do not use
 ## Source Of Truth
 
 - `README.md`
+- `SOURCE-OF-TRUTH.md`
 - `HANDOFF.md`
 - `LESSONS-LEARNED.md`
 - `GLOBAL-DECISIONS.md`
@@ -23,10 +24,11 @@ Use this for references, research, source maps, and durable pointers. Do not use
 ## Start Here
 
 1. Read `AGENTS.md`.
-2. Read `PROJECT-STATUS.md`.
-3. Read `HANDOFF.md`.
-4. Read `hermes-tasks-queue.md`, `hermes-tasks-decisions.md`, and `GLOBAL-DECISIONS.md`.
-5. Open only the specific capability root needed for the task.
+2. Read `SOURCE-OF-TRUTH.md`.
+3. Read `PROJECT-STATUS.md`.
+4. Read `HANDOFF.md`.
+5. Read `hermes-tasks-queue.md`, `hermes-tasks-decisions.md`, and `GLOBAL-DECISIONS.md`.
+6. Open only the specific capability root needed for the task.
 
 ## Capability Roots
 
@@ -53,6 +55,7 @@ Use this for references, research, source maps, and durable pointers. Do not use
 
 ## Technical References
 
+- Source-of-truth parity check: `python tools/check_source_of_truth_parity.py`
 - Project shape check: `python /home/guidingl/projects/capabilities-framework/tools/validate_project_shape.py --project /home/guidingl/projects/hermes-tasks --project-slug hermes-tasks`
 - Baseline capability graph check: `python /home/guidingl/projects/capabilities-framework/tools/validate_capability_graph.py --root /home/guidingl/projects/hermes-tasks/capabilities --json`
 - Connections/control graph check: `python /home/guidingl/projects/capabilities-framework/tools/validate_capability_graph.py --root /home/guidingl/projects/hermes-tasks/capabilities-connections-control --json`

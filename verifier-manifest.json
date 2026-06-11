@@ -165,6 +165,32 @@
         "agent-only browser CDP endpoint exists and page state can be read"
       ],
       "what_it_does_not_prove": "It does not prove external account login state or approval for any external action."
+    },
+    {
+      "id": "source-of-truth-parity-check",
+      "tier": "tier_1_local_fast",
+      "graduation_stage": "verifier_backed",
+      "graduation_status": "candidate",
+      "command": "python tools/check_source_of_truth_parity.py",
+      "cwd": ".",
+      "scope": "Checks required source-of-truth docs, timestamp markers, stale current-state phrases, and clean git/upstream parity when applicable.",
+      "environment": "local",
+      "mutation": "none",
+      "approval_required": "no, if run locally on Banebook",
+      "requires_explicit_approval": false,
+      "runs_automatically": false,
+      "evidence_artifact": "terminal output in active session or lane handoff",
+      "capability_refs": [
+        "capabilities-agent-infrastructure/principles/source-of-truth-timestamp-parity.md"
+      ],
+      "risk_triggers": [
+        "raise tier if checker starts reading secrets, raw runtime profiles, or external private services"
+      ],
+      "proves": [
+        "required source-of-truth docs exist and current-state stale phrases are absent",
+        "clean local git HEAD matches upstream when the worktree is clean and tracking exists"
+      ],
+      "what_it_does_not_prove": "It does not prove every fact in every doc; it is a parity guardrail."
     }
   ]
 }

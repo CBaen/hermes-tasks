@@ -7,8 +7,8 @@ Use this file for project-specific truth, routing, and constraints. Do not dupli
 ## If You Are New, Do This First
 
 1. Confirm the current git branch is `main` when this is a git repo.
-2. Read the current handoff/status file if present.
-3. Read `hermes-tasks-queue.md`, `hermes-tasks-decisions.md`, and `hermes-tasks-index.md`.
+2. Read `SOURCE-OF-TRUTH.md`, then the current handoff/status file if present.
+3. Read `hermes-tasks-queue.md`, `hermes-tasks-decisions.md`, `GLOBAL-DECISIONS.md`, and `hermes-tasks-index.md`.
 4. Read `capabilities/INDEX.md` or the nearest project capability root only as needed for the task.
 5. Verify before claiming work is done.
 
@@ -36,7 +36,7 @@ If adding another capabilities framework folder in this project:
 - Client / owner: Guiding Light
 - What this project is: A new persistent project scaffold rooted at this repo, ready for queue/decision/index/capability-driven work.
 - What this project is not: A finished app, runtime state dump, or secret store.
-- Current source of truth: `AGENTS.md`, `hermes-tasks-queue.md`, `hermes-tasks-decisions.md`, `hermes-tasks-index.md`, `PROJECT-STATUS.md`, and `capabilities/INDEX.md`.
+- Current source of truth: `AGENTS.md`, `SOURCE-OF-TRUTH.md`, `PROJECT-STATUS.md`, `HANDOFF.md`, `hermes-tasks-queue.md`, `hermes-tasks-decisions.md`, `GLOBAL-DECISIONS.md`, `LESSONS-LEARNED.md`, `hermes-tasks-index.md`, `agent-lanes/BOARD.md`, and the relevant capability root index.
 
 ## Read First
 

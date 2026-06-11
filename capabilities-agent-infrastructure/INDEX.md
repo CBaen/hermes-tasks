@@ -2,8 +2,8 @@
 
 ## Root Label
 
-- Purpose: Reusable capabilities for Uma/Hermes infrastructure on Banebook: profile files, SOUL routing, project docs, launcher setup, background jobs, workspace conventions, and validation.
-- Belongs here: Main repo/project maps, Hermes profile/runtime boundaries, SOUL file pointers, launcher configuration, scheduled job patterns, local artifact conventions, and verification commands.
+- Purpose: Reusable capabilities for Uma/Hermes infrastructure on Banebook: profile files, SOUL routing, project docs, launcher setup, background jobs, workspace conventions, timestamp parity, and validation.
+- Belongs here: Main repo/project maps, Hermes profile/runtime boundaries, SOUL file pointers, launcher configuration, scheduled job patterns, local artifact conventions, source-of-truth rules, and verification commands.
 - Does not belong here: Secrets, `.env` contents, auth stores, raw browser state, OAuth tokens, raw logs, or unrelated project implementation details.
 - Related roots:
   - `capabilities/` - baseline project operating capabilities
@@ -18,10 +18,11 @@
 3. Link to runtime/profile files by path when useful, but do not copy secrets or auth/session state.
 4. Prefer reversible local launcher/config changes and verify them with real commands.
 5. Update project index/status/decisions when infrastructure changes affect future sessions.
+6. Run the source-of-truth parity check after state-bearing doc changes.
 
 ## Principles
 
-- Add stable infrastructure rules here after they are verified.
+- [Source Of Truth Timestamp Parity](principles/source-of-truth-timestamp-parity.md) - timestamp and parity rules for AI-readable current-state docs.
 
 ## Recipes
 

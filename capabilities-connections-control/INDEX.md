@@ -33,6 +33,7 @@
 - [Local Brave CDP Open Tabs](ingredients/local-brave-cdp-open-tabs.md) - verified open-tab access through Brave CDP on Banebook.
 - [Browser Protocol Page Control And Typing](ingredients/browser-protocol-page-control-and-typing.md) - verified DOM/CDP reading, focusing, and text entry without physical keyboard or mouse takeover.
 - [Desktop Input Control Boundary](ingredients/desktop-input-control-boundary.md) - verified desktop input tools exist, with last-resort safety boundary.
+- [Wardenclyffe Kubuntu SSH Bridge](ingredients/wardenclyffe-kubuntu-ssh-bridge.md) - verified Tailscale/SSH status bridge to Wardenclyffe; current target is Kubuntu/Linux, not the retired Windows PowerShell workflow.
 
 ## Meals
 

@@ -2,6 +2,16 @@
 
 Newest entries first.
 
+## 2026-06-11T17:52:58-06:00 - Wardenclyffe current target is Kubuntu SSH, not retired Windows PowerShell
+
+Decision: Document Wardenclyffe's current reachable control surface as Kubuntu/Linux over Tailscale and SSH, while treating older Windows/PowerShell assumptions as stale unless reverified.
+
+Reason: Live helper inspection and `/home/guidingl/bin/wardenclyffe-status` showed Wardenclyffe reachable as `WARDENCLYFFE` running Linux `7.0.0-14-generic x86_64`. The `wardenclyffe-ps` helper explicitly says the prior Windows workflow was removed.
+
+Applies to: `capabilities-connections-control/ingredients/wardenclyffe-kubuntu-ssh-bridge.md`, future Wardenclyffe operations, and any doc claiming PowerShell/Windows routing.
+
+Verification / evidence: Tailscale ping, TCP 22, SSH `id/hostname/uname`, filesystem inventory, and helper script inspection on 2026-06-11.
+
 ## 2026-06-11T16:44:49-06:00 - GitHub auth lives under real user HOME for Hermes shell pushes
 
 Decision: Use `HOME=/home/guidingl` for GitHub CLI and git network operations from this Hermes session when pushing `hermes-tasks`.

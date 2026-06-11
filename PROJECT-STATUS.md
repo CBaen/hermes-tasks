@@ -1,6 +1,6 @@
 # Hermes Tasks Status
 
-Last updated: 2026-06-11T16:06:12-06:00
+Last updated: 2026-06-11T17:52:58-06:00
 
 ## What this is
 
@@ -12,22 +12,24 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 
 ## Current state
 
-- Stage: Published to GitHub.
+- Stage: Published to GitHub; continuing verified capability/documentation maintenance.
 - Branch: `main` tracking `origin/main`.
 - Remote: `https://github.com/CBaen/hermes-tasks`.
-- Published commit verified on remote: `4cc409d8712561f23c5a9a6b082e5edac769271b`.
-- Current source of truth: `README.md`, `HANDOFF.md`, `LESSONS-LEARNED.md`, `GLOBAL-DECISIONS.md`, `AGENTS.md`, queue/index/decisions docs, `agent-lanes/BOARD.md`, `verifier-manifest.json`, baseline `capabilities/INDEX.md`, and sibling capability roots.
-- Main active work: Maintain the persistent Hermes task scaffold and verified connection/control capabilities.
-- Current blockers: None for publish. Auth detail for future agents: use `HOME=/home/guidingl` for GitHub CLI/git operations from Hermes because default Hermes `$HOME` is not logged in.
+- Current publish truth: use live `git status -sb` and `HOME=/home/guidingl git ls-remote --heads origin main`; do not rely on embedded SHAs as current after new commits.
+- Current source-of-truth entrypoint: `SOURCE-OF-TRUTH.md`.
+- Main active work: Keep source-of-truth docs timestamped/in parity and add only verified connection/control capabilities.
+- Current blockers: messaging/notification has no connected targets; old empty test browser profile cleanup requires explicit deletion approval; Wardenclyffe helper commands work by absolute path but are not in Hermes PATH.
 
 ## Active workstreams
 
 | Workstream | Outcome | Status | Owner / session | Verification state |
 |---|---|---|---|---|
-| connections-control | Internet/browser/control capability stack plus agent-only browser profile | Implemented; publish pending until git push completes | Hermes WebUI session 2026-06-11 | Validated locally |
+| source-of-truth-parity | Timestamp policy, authority order, and parity verifier | In progress this session | Hermes WebUI session 2026-06-11 | Pending final validation/publish |
+| connections-control | Internet/browser/control stack plus Wardenclyffe bridge | Implemented and expanding with verified-only cards | Hermes WebUI session 2026-06-11 | Browser stack and Wardenclyffe status verified locally |
 
 ## Required project package
 
+- Source-of-truth contract: `SOURCE-OF-TRUTH.md`
 - Project front door: `README.md`
 - Project agent entrypoint: `AGENTS.md`
 - Current handoff: `HANDOFF.md`
@@ -44,7 +46,7 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 - Collaboration/autonomy capability root: `capabilities-collaboration-autonomy/INDEX.md`
 - Agent infrastructure capability root: `capabilities-agent-infrastructure/INDEX.md`
 - Verifier manifest: `verifier-manifest.json`
-- Verification artifacts: `artifacts/`
+- Verification artifacts/scripts: `artifacts/`, `tools/check_source_of_truth_parity.py`
 
 ## Runtime state documented but not copied into repo
 
@@ -54,26 +56,26 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 - Agent-only Brave CDP lane: `http://127.0.0.1:9223`
 - Agent-only profile: `/home/guidingl/.local/share/hermes/agent-brave-profile`
 - Agent-only helpers: `/home/guidingl/.local/bin/hermes-agent-brave*`, `/home/guidingl/.local/bin/hermes-agent-cdp`
+- Wardenclyffe helpers: `/home/guidingl/bin/wardenclyffe-*` by absolute path
 
 ## Verification notes
 
 Checked this session:
 
-- Full LibreOffice suite installed/verified on Banebook; proof artifact stored at `artifacts/libreoffice/cheese-poem.odt`.
-- User/live Brave CDP lane works on `9222`.
-- Agent-only Brave profile works on `9223` and can navigate/read/type through CDP.
-- `capabilities-connections-control/` contains the verified internet/browser/control stack.
-- Project docs were expanded for AI handoff, lessons, decisions, queue, index, lane board, and verifier manifest.
+- Messaging delivery targets: none connected/discovered via `send_message(action="list")`.
+- Wardenclyffe status: Tailscale/SSH reachable; current target `WARDENCLYFFE` is Linux/Kubuntu, not retired Windows PowerShell workflow.
+- Agent-only browser profile remains reachable on `9223`.
+- GitHub auth for publish works with `HOME=/home/guidingl`.
 
 Expected validation commands:
 
 ```bash
+python tools/check_source_of_truth_parity.py
 python /home/guidingl/projects/capabilities-framework/tools/validate_project_shape.py --project /home/guidingl/projects/hermes-tasks --project-slug hermes-tasks
 python /home/guidingl/projects/capabilities-framework/tools/validate_capability_graph.py --root /home/guidingl/projects/hermes-tasks/capabilities-connections-control --json
-python /home/guidingl/projects/capabilities-framework/tools/validate_capability_graph.py --root /home/guidingl/projects/hermes-tasks/capabilities-collaboration-autonomy --json
 python /home/guidingl/projects/capabilities-framework/tools/validate_capability_graph.py --root /home/guidingl/projects/hermes-tasks/capabilities-agent-infrastructure --json
 ```
 
 ## Next safest move
 
-Add only actually verified new capabilities: notification/messaging first if a platform is connected; Wardenclyffe bridge only after helper commands are present and tested.
+Finish and publish the timestamp/source-of-truth parity update, then add notification capability only after a real messaging platform is connected. Do not delete the old test profile without explicit approval.

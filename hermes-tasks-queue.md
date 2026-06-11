@@ -4,13 +4,16 @@
 
 | Priority | Workstream | Outcome | Status | Owner | Verification |
 |---|---|---|---|---|---|
-| P1 | next-verified-capability | Add messaging/notification or Wardenclyffe capability only after live verification | Not started | future Hermes session | Requires real connected target/helper proof |
+| P0 | source-of-truth-parity | Timestamp contract, authority order, parity checker, and updated docs/capabilities | In progress | current Hermes session | Pending validation/commit/push |
+| P1 | next-verified-capability | Add messaging/notification only after a connected target exists | Blocked on no connected messaging target | future Hermes session | `send_message(action="list")` found no targets on 2026-06-11T17:52:58-06:00 |
+| P1 | wardenclyffe-bridge | Use verified Wardenclyffe Kubuntu SSH bridge by absolute helper paths | Implemented as capability card; PATH bridge still optional | future Hermes session | `/home/guidingl/bin/wardenclyffe-status` succeeded on 2026-06-11T17:52:58-06:00 |
 
 ## Next
 
+- Finish and publish the source-of-truth parity update.
 - Add notification/messaging capability only after an actual target/platform is connected and verified.
-- Add Wardenclyffe bridge capability only after current helper commands are present and tested from this Hermes session.
-- Decide whether to keep or delete the old empty test profile under `/home/guidingl/.hermes/profiles/banebook/home/.local/share/hermes/agent-brave-profile`; do not delete without explicit approval.
+- Optionally add a PATH bridge capability so Hermes can call `/home/guidingl/bin` and `/home/guidingl/.local/bin` helpers without absolute paths.
+- Decide whether to keep or delete the old 63M test profile under `/home/guidingl/.hermes/profiles/banebook/home/.local/share/hermes/agent-brave-profile`; do not delete without explicit approval.
 
 ## Parked
 
@@ -19,7 +22,8 @@
 
 ## Done
 
-- 2026-06-11T17:03:04-06:00: Cleaned stale publish-status wording; remote main already verified at `4cc409d8712561f23c5a9a6b082e5edac769271b` before this cleanup commit.
+- 2026-06-11T17:52:58-06:00: Added source-of-truth/timestamp parity policy draft, parity checker, and verified Wardenclyffe Kubuntu SSH bridge card; messaging remains blocked with no connected targets.
+- 2026-06-11T17:03:04-06:00: Cleaned stale publish-status wording; remote main verified at `4cc409d8712561f23c5a9a6b082e5edac769271b` before cleanup commit.
 - 2026-06-11T16:44:49-06:00: Resolved GitHub auth path by using `HOME=/home/guidingl`; pushed `main` to `origin` with remote ref `70c83bbb5c746c84ab6c77d1659e25ee87b4fe23` before final status commit.
 - 2026-06-11T16:21:24-06:00: Created local commit `f5033b8e5edcc5fa2cf01fcedd1a2f40c137c881`; later pushed successfully once real-user HOME GitHub auth was used.
 - 2026-06-11T16:06:12-06:00: Added AI-facing handoff, lessons learned, global decisions, lane handoff, and LibreOffice artifact documentation for this session.

@@ -1,6 +1,6 @@
 # Connections Control Lane
 
-TS:2026-06-11T16:06:12-06:00 | Check:verified browser lanes, capability graph, and helper commands | Confidence:high
+TS:2026-06-11T17:52:58-06:00 | Check:browser lanes, Wardenclyffe status, messaging target discovery, capability graph | Confidence:high
 
 ## Scope
 
@@ -9,11 +9,11 @@ TS:2026-06-11T16:06:12-06:00 | Check:verified browser lanes, capability graph, a
 
 ## Goal
 
-Make Uma/Hermes better connected and able to execute internet/browser tasks independently on Banebook while avoiding physical cursor/keyboard takeover and preserving approval gates.
+Make Uma/Hermes better connected and able to execute internet/browser/remote-control tasks independently on Banebook while avoiding physical cursor/keyboard takeover and preserving approval gates.
 
 ## Current Status
 
-Status: Implemented and verified.
+Status: Implemented and expanded with verified Wardenclyffe Kubuntu SSH bridge.
 
 ## Changed Files
 
@@ -22,9 +22,10 @@ Status: Implemented and verified.
 - `capabilities-connections-control/ingredients/local-brave-cdp-open-tabs.md`
 - `capabilities-connections-control/ingredients/browser-protocol-page-control-and-typing.md`
 - `capabilities-connections-control/ingredients/desktop-input-control-boundary.md`
+- `capabilities-connections-control/ingredients/wardenclyffe-kubuntu-ssh-bridge.md`
 - `capabilities-connections-control/recipes/agent-only-browser-lane.md`
 - `capabilities-connections-control/meals/internet-and-browser-control-stack.md`
-- Root docs that route/record this work: `README.md`, `PROJECT-STATUS.md`, `hermes-tasks-index.md`, `hermes-tasks-decisions.md`, `GLOBAL-DECISIONS.md`, `LESSONS-LEARNED.md`, `HANDOFF.md`.
+- Root docs that route/record this work: `README.md`, `PROJECT-STATUS.md`, `hermes-tasks-index.md`, `hermes-tasks-decisions.md`, `GLOBAL-DECISIONS.md`, `LESSONS-LEARNED.md`, `HANDOFF.md`, `SOURCE-OF-TRUTH.md`.
 
 ## Runtime Files Created Outside Repo
 
@@ -37,22 +38,35 @@ Status: Implemented and verified.
 
 Do not commit those runtime files into this repo. This handoff and the capability recipe document their expected behavior.
 
+## Runtime Files Discovered Outside Repo
+
+- `/home/guidingl/bin/wardenclyffe-status`
+- `/home/guidingl/bin/wardenclyffe-ssh`
+- `/home/guidingl/bin/wardenclyffe-sftp`
+- `/home/guidingl/bin/wardenclyffe-rdp`
+- `/home/guidingl/bin/wardenclyffe-rdp-multimon`
+- `/home/guidingl/bin/wardenclyffe-ps` - retired prior Windows workflow; exits with instruction to use SSH/Linux commands.
+
+Hermes terminal PATH currently does not include `/home/guidingl/bin` or `/home/guidingl/.local/bin`; use absolute paths unless a PATH bridge is intentionally added and verified.
+
 ## Validation
 
 Latest known checks:
 
-- Project shape validator: expected ok=true, 0 errors, 0 warnings.
-- Connections/control capability graph: ok=true, 6 cards, 0 errors, 0 warnings.
+- Project shape validator: ok=true, 0 errors, 0 warnings.
+- Connections/control capability graph: ok=true, 7 cards, 0 errors, 0 warnings.
 - Agent-only CDP lane: `127.0.0.1:9223` reachable.
 - User/live CDP lane: `127.0.0.1:9222` reachable.
-- Agent-only browser control proof: inserted/read back `Hermes agent profile typed this via CDP`.
+- Agent-only browser control proof: inserted/read back `Hermes agent profile typed this via CDP` in earlier session.
+- Messaging target discovery: `send_message(action="list")` returned no connected targets.
+- Wardenclyffe status: Tailscale ping, TCP 22, and SSH inventory succeeded; current OS is Kubuntu/Linux, not retired Windows PowerShell workflow.
 
 ## Remaining Debt
 
 - Add a real notification/messaging capability only after a platform target is connected and verified.
-- Add Wardenclyffe connection/control card only after helper commands are present and tested from this Hermes session.
-- Decide whether to keep, ignore, or delete the old empty test profile under Hermes internal profile-home path.
+- Optional: add a PATH bridge capability so Hermes can call real-user helper directories without absolute paths.
+- Decide whether to keep, ignore, or delete the old 63M test profile under Hermes internal profile-home path; do not delete without explicit approval.
 
 ## Handoff Notes
 
-Use the agent-only browser lane for public research and independent browsing. Use the user/live lane only when the user needs help with a page already open in their normal Brave session, especially logged-in account pages.
+Use the agent-only browser lane for public research and independent browsing. Use the user/live lane only when the user needs help with a page already open in their normal Brave session, especially logged-in account pages. Use Wardenclyffe only through verified Linux/SSH helpers and keep risky remote actions behind approval gates.

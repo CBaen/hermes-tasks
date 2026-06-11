@@ -2,6 +2,14 @@
 
 Newest entries first. AI-facing, concise, and evidence-oriented. Do not store secrets or raw session dumps here.
 
+## 2026-06-11T17:52:58-06:00 - Timestamp current-state docs together to avoid source-of-truth drift
+
+Lesson: When current state changes, update all affected AI-facing docs in one pass and timestamp them with ISO-8601 timezone values.
+
+Why it matters: A successful push can still leave stale lines like "publish pending" or old `Last updated` values. Future agents should verify live state, then immediately repair stale current-state docs.
+
+Verification: Added `SOURCE-OF-TRUTH.md` and `tools/check_source_of_truth_parity.py`.
+
 ## 2026-06-11T16:06:12-06:00 - Separate browser profile avoids interfering with the user's live tabs
 
 Lesson: For independent web work, use the agent-only Brave lane on `127.0.0.1:9223` instead of navigating the user's normal Brave tabs on `127.0.0.1:9222`.
