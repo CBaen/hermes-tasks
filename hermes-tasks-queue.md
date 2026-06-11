@@ -4,7 +4,7 @@
 
 | Priority | Workstream | Outcome | Status | Owner | Verification |
 |---|---|---|---|---|---|
-| P0 | publish-session-state | Commit and push AI-readable Hermes operating scaffold and verified connection/control capability docs to `https://github.com/CBaen/hermes-tasks` | In progress | current Hermes session | Local validation pending final pre-commit run |
+| P0 | publish-session-state | Push local commit `f5033b8e5edcc5fa2cf01fcedd1a2f40c137c881` to `https://github.com/CBaen/hermes-tasks` | Blocked on GitHub authentication | current Hermes session / next authenticated operator | Local validation passed; local commit exists; remote push failed without credentials |
 
 ## Next
 
@@ -19,6 +19,7 @@
 
 ## Done
 
+- 2026-06-11T16:21:24-06:00: Created local commit `f5033b8e5edcc5fa2cf01fcedd1a2f40c137c881` but remote push is blocked by missing GitHub authentication.
 - 2026-06-11T16:06:12-06:00: Added AI-facing handoff, lessons learned, global decisions, lane handoff, and LibreOffice artifact documentation for this session.
 - 2026-06-11T15:54:59-06:00: Created and verified Uma's agent-only Brave profile lane on port `9223` with launch/status/stop/CDP helpers.
 - 2026-06-11T15:43:16-06:00: Focused capability work on `capabilities-connections-control/` and added verified internet/browser/control ingredients plus the composed control stack.

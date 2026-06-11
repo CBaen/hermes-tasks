@@ -12,12 +12,13 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 
 ## Current state
 
-- Stage: Scaffolded and ready for AI handoff/publish.
+- Stage: Locally committed; remote push blocked by missing GitHub authentication.
 - Branch: `main`.
 - Intended remote: `https://github.com/CBaen/hermes-tasks`.
+- Local publish commit: `f5033b8e5edcc5fa2cf01fcedd1a2f40c137c881`.
 - Current source of truth: `README.md`, `HANDOFF.md`, `LESSONS-LEARNED.md`, `GLOBAL-DECISIONS.md`, `AGENTS.md`, queue/index/decisions docs, `agent-lanes/BOARD.md`, `verifier-manifest.json`, baseline `capabilities/INDEX.md`, and sibling capability roots.
-- Main active work: Maintaining the persistent Hermes task scaffold and growing verified connection/control capabilities.
-- Current blockers: None for local validation. Remote push still depends on GitHub authentication/network when executed.
+- Main active work: Authenticate GitHub and push `main`; otherwise maintain the persistent Hermes task scaffold and verified connection/control capabilities.
+- Current blockers: `git push -u origin main` cannot complete until GitHub auth is available in this shell. Checked: `gh` not logged in; SSH denied; no credential helper/token present.
 
 ## Active workstreams
 
@@ -75,4 +76,4 @@ python /home/guidingl/projects/capabilities-framework/tools/validate_capability_
 
 ## Next safest move
 
-Commit the scoped repo changes and push to `https://github.com/CBaen/hermes-tasks`. After publish, add only actually verified new capabilities: notification/messaging first if a platform is connected; Wardenclyffe bridge only after helper commands are present and tested.
+Authenticate GitHub for this repo, then run `git push -u origin main`. After publish, add only actually verified new capabilities: notification/messaging first if a platform is connected; Wardenclyffe bridge only after helper commands are present and tested.

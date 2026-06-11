@@ -66,9 +66,16 @@ hermes-agent-brave-status
 hermes-agent-cdp eval '({title: document.title, url: location.href})'
 ```
 
+## Publish status
+
+- Local commit created: `f5033b8e5edcc5fa2cf01fcedd1a2f40c137c881` (`Document Hermes browser control capabilities`).
+- Remote configured: `origin https://github.com/CBaen/hermes-tasks`.
+- Push attempt failed because this shell has no GitHub credentials: HTTPS push could not read a username; `gh` is installed but not logged in; SSH to GitHub is not authorized; no token/credential helper was available.
+- A `gh auth login --web` attempt produced a device login code once, but the foreground command timed out. A later background attempt did not emit a usable code, so the login was stopped. Do not claim push completed until `git push -u origin main` succeeds.
+
 ## Remaining work
 
-- Commit and push this repo to `https://github.com/CBaen/hermes-tasks`.
+- Authenticate GitHub for this machine/session, then run `git push -u origin main` from `/home/guidingl/projects/hermes-tasks`.
 - Add messaging/notification capability only after a real platform is connected and verified.
 - Repair or document Wardenclyffe bridge only after current helper availability is verified.
 - If the user wants a cleaner workspace, decide whether to delete the old empty test profile at `/home/guidingl/.hermes/profiles/banebook/home/.local/share/hermes/agent-brave-profile`; do not delete without approval.

@@ -20,7 +20,7 @@ Give every agent a fast view of active lanes, write scopes, owners, and handoff 
 
 | Lane | Owner | Write scope | Handoff | Status | Last update |
 |---|---|---|---|---|---|
-| publish-session-state | current Hermes session | root docs, verifier manifest, git metadata only | `HANDOFF.md` | In progress until commit/push completes | 2026-06-11T16:06:12-06:00 |
+| publish-session-state | current Hermes session / next authenticated operator | root docs, verifier manifest, git metadata only | `HANDOFF.md` | Blocked on GitHub authentication after local commit | 2026-06-11T16:21:24-06:00 |
 
 ## Coordination Notes
 
@@ -35,11 +35,11 @@ Give every agent a fast view of active lanes, write scopes, owners, and handoff 
 
 TS:2026-06-11T16:06:12-06:00 | Check:docs consolidated before final validation/commit | Confidence:high
 
-- Status: In progress until GitHub push verifies.
-- Current focus: commit and push session state to `https://github.com/CBaen/hermes-tasks`.
+- Status: Blocked after local commit `f5033b8e5edcc5fa2cf01fcedd1a2f40c137c881`.
+- Current focus: authenticate GitHub and run `git push -u origin main`.
 - Latest changed files: root docs, `agent-lanes/`, `capabilities-*`, `verifier-manifest.json`, `.gitignore`, `artifacts/`.
-- Latest validation: pending final run after doc consolidation.
-- Blockers: possible remote/auth failure only.
+- Latest validation: project shape ok=true; new capability roots ok=true; browser lanes verified after relaunch.
+- Blockers: no GitHub auth available in shell (`gh` not logged in, SSH denied, HTTPS credential missing).
 
 ## Done / Closed Lanes
 

@@ -2,6 +2,16 @@
 
 Newest entries first.
 
+## 2026-06-11T16:21:24-06:00 - Remote push requires explicit GitHub authentication setup
+
+Decision: Do not fake or bypass the GitHub push when credentials are unavailable. Record the local commit and auth blocker, then wait for an authenticated path.
+
+Reason: The user asked to commit and push, but pushing to GitHub requires account authentication. This shell has no HTTPS credential helper/token, `gh` is not logged in, and SSH is denied. Adding persistent GitHub auth or SSH keys affects account/security state and needs the user's active login/authorization.
+
+Applies to: remote `origin` at `https://github.com/CBaen/hermes-tasks`, local commit `f5033b8e5edcc5fa2cf01fcedd1a2f40c137c881`, and the `publish-session-state` queue item.
+
+Verification / evidence: `git push -u origin main` failed with `could not read Username for 'https://github.com'`; `gh auth status` reported not logged in; `ssh -T git@github.com` returned permission denied.
+
 ## 2026-06-11T16:06:12-06:00 - Publish AI-readable operating state rather than runtime state
 
 Decision: Commit/push the visible Hermes Tasks repo with AI-readable docs, capability cards, verifier declarations, handoffs, lessons, and safe verification artifacts; do not copy runtime browser profiles, cookies, auth stores, helper script contents from outside the repo, raw logs, or secrets into git.
