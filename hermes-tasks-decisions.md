@@ -2,6 +2,16 @@
 
 Newest entries first.
 
+## 2026-06-11T16:44:49-06:00 - GitHub auth lives under real user HOME for Hermes shell pushes
+
+Decision: Use `HOME=/home/guidingl` for GitHub CLI and git network operations from this Hermes session when pushing `hermes-tasks`.
+
+Reason: Hermes terminal default `$HOME` is `/home/guidingl/.hermes/profiles/banebook/home`, where `gh auth status` is not logged in. The user completed GitHub auth under `/home/guidingl`, where `gh auth status` reports account `CBaen` with HTTPS git protocol.
+
+Applies to: `git push`, `git ls-remote`, `gh auth status`, and future GitHub operations for `/home/guidingl/projects/hermes-tasks` from Hermes.
+
+Verification / evidence: `HOME=/home/guidingl gh auth status` reported logged in to github.com account `CBaen`; `HOME=/home/guidingl git push -u origin main` succeeded and remote `main` reached `70c83bbb5c746c84ab6c77d1659e25ee87b4fe23`.
+
 ## 2026-06-11T16:21:24-06:00 - Remote push requires explicit GitHub authentication setup
 
 Decision: Do not fake or bypass the GitHub push when credentials are unavailable. Record the local commit and auth blocker, then wait for an authenticated path.

@@ -12,13 +12,13 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 
 ## Current state
 
-- Stage: Locally committed; remote push blocked by missing GitHub authentication.
-- Branch: `main`.
-- Intended remote: `https://github.com/CBaen/hermes-tasks`.
-- Local publish commit: `f5033b8e5edcc5fa2cf01fcedd1a2f40c137c881`.
+- Stage: Published to GitHub; final publish-status commit in progress.
+- Branch: `main` tracking `origin/main`.
+- Remote: `https://github.com/CBaen/hermes-tasks`.
+- First pushed commit: `70c83bbb5c746c84ab6c77d1659e25ee87b4fe23`.
 - Current source of truth: `README.md`, `HANDOFF.md`, `LESSONS-LEARNED.md`, `GLOBAL-DECISIONS.md`, `AGENTS.md`, queue/index/decisions docs, `agent-lanes/BOARD.md`, `verifier-manifest.json`, baseline `capabilities/INDEX.md`, and sibling capability roots.
-- Main active work: Authenticate GitHub and push `main`; otherwise maintain the persistent Hermes task scaffold and verified connection/control capabilities.
-- Current blockers: `git push -u origin main` cannot complete until GitHub auth is available in this shell. Checked: `gh` not logged in; SSH denied; no credential helper/token present.
+- Main active work: Maintain the persistent Hermes task scaffold and verified connection/control capabilities.
+- Current blockers: None for publish. Auth detail for future agents: use `HOME=/home/guidingl` for GitHub CLI/git operations from Hermes because default Hermes `$HOME` is not logged in.
 
 ## Active workstreams
 
@@ -76,4 +76,4 @@ python /home/guidingl/projects/capabilities-framework/tools/validate_capability_
 
 ## Next safest move
 
-Authenticate GitHub for this repo, then run `git push -u origin main`. After publish, add only actually verified new capabilities: notification/messaging first if a platform is connected; Wardenclyffe bridge only after helper commands are present and tested.
+After this final status commit is pushed, add only actually verified new capabilities: notification/messaging first if a platform is connected; Wardenclyffe bridge only after helper commands are present and tested.

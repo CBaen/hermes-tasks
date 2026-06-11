@@ -4,7 +4,7 @@
 
 | Priority | Workstream | Outcome | Status | Owner | Verification |
 |---|---|---|---|---|---|
-| P0 | publish-session-state | Push local commit `f5033b8e5edcc5fa2cf01fcedd1a2f40c137c881` to `https://github.com/CBaen/hermes-tasks` | Blocked on GitHub authentication | current Hermes session / next authenticated operator | Local validation passed; local commit exists; remote push failed without credentials |
+| P1 | next-verified-capability | Add messaging/notification or Wardenclyffe capability only after live verification | Not started | future Hermes session | Requires real connected target/helper proof |
 
 ## Next
 
@@ -19,7 +19,8 @@
 
 ## Done
 
-- 2026-06-11T16:21:24-06:00: Created local commit `f5033b8e5edcc5fa2cf01fcedd1a2f40c137c881` but remote push is blocked by missing GitHub authentication.
+- 2026-06-11T16:44:49-06:00: Resolved GitHub auth path by using `HOME=/home/guidingl`; pushed `main` to `origin` with remote ref `70c83bbb5c746c84ab6c77d1659e25ee87b4fe23` before final status commit.
+- 2026-06-11T16:21:24-06:00: Created local commit `f5033b8e5edcc5fa2cf01fcedd1a2f40c137c881`; later pushed successfully once real-user HOME GitHub auth was used.
 - 2026-06-11T16:06:12-06:00: Added AI-facing handoff, lessons learned, global decisions, lane handoff, and LibreOffice artifact documentation for this session.
 - 2026-06-11T15:54:59-06:00: Created and verified Uma's agent-only Brave profile lane on port `9223` with launch/status/stop/CDP helpers.
 - 2026-06-11T15:43:16-06:00: Focused capability work on `capabilities-connections-control/` and added verified internet/browser/control ingredients plus the composed control stack.
