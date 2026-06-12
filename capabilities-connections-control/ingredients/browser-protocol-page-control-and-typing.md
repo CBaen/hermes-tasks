@@ -11,6 +11,7 @@ last_verified: 2026-06-11
 depends_on:
   - local-brave-cdp-open-tabs
 used_by:
+  - approval-gated-account-page-automation
   - internet-and-browser-control-stack
 tags:
   - banebook

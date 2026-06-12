@@ -14,6 +14,7 @@
 - Add notification/messaging capability only after an actual target/platform is connected and verified.
 - Keep parity checker passing before/after docs/capability publish.
 - Decide whether to keep or delete the old 63M test profile under `/home/guidingl/.hermes/profiles/banebook/home/.local/share/hermes/agent-brave-profile`; do not delete without explicit approval.
+- 2026-06-12T16:21:19-06:00: Review GoDaddy cleanup path for `locallytwisted.com`. Verified today: Cloudflare is authoritative DNS, Cloudflare MX is present, Frappe Cloud serves the live site, Bluehost auto-renew cleanup was handled separately, and GoDaddy still appears to be the registrar with domain expiration `2027-05-19`. Do not fully cancel/close GoDaddy until either the domain registration is transferred to Cloudflare Registrar or the user intentionally keeps GoDaddy as registrar. Next review steps: recover GoDaddy access despite EdgeSuite/504 errors, check for non-domain GoDaddy products to cancel, and preserve/continue domain registration until transfer is complete.
 
 ## Parked
 
@@ -22,6 +23,7 @@
 
 ## Done
 
+- 2026-06-12T16:26:51-06:00: Completed Bluehost auto-renew cleanup for `locallytwisted.com` after explicit user approval. Turned off auto-renew through Bluehost confirmation flows for SiteLock Essentials and WordPress Basic Hosting tied to the domain. Bluehost showed processing notices; Renewal Center/API verification showed `AutoRenewOn=0`, `AutoRenewOff=1`, and WordPress Basic Hosting `autoRenew=false`. Visible Bluehost Angular table/cache remained stale after reload, so future agents should verify backend/API state before retrying account actions.
 - 2026-06-11T22:37:43-06:00: Followed Wardenclyffe reverse SSH handoff, authorized exact verified key on Banebook, confirmed Wardenclyffe can SSH back into Banebook, regenerated/validated Slack manifest, and documented messaging options.
 - 2026-06-11T18:17:03-06:00: Added and verified profile-local Hermes terminal PATH bridge; helper commands now resolve by name and smoke checks passed for `hermes-agent-brave-status` and `wardenclyffe-ssh`.
 - 2026-06-11T17:52:58-06:00: Added source-of-truth/timestamp parity policy draft, parity checker, and verified Wardenclyffe Kubuntu SSH bridge card; messaging remains blocked with no connected targets.

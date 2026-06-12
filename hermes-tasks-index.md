@@ -44,6 +44,23 @@ Use this for references, research, source maps, and durable pointers. Do not use
 - Lane handoff template: `agent-lanes/LANE-HANDOFF.template.md`
 - Connections/control lane handoff: `agent-lanes/connections-control-HANDOFF.md`
 
+## Locally Twisted Service Map
+
+Verified on 2026-06-12 for `locallytwisted.com`:
+
+- Cloudflare is authoritative DNS.
+- Cloudflare MX is present.
+- Frappe Cloud serves the live site.
+- Bluehost auto-renew was disabled after explicit user approval for SiteLock Essentials and WordPress Basic Hosting tied to the domain; Renewal Center/API showed `AutoRenewOn=0`, `AutoRenewOff=1`, and WordPress Basic Hosting `autoRenew=false`.
+- GoDaddy still appeared to be registrar with expiration `2027-05-19`; access was blocked by GoDaddy/Akamai EdgeSuite/504-style errors.
+
+Pointers:
+
+- Handoff detail: `HANDOFF.md`
+- Queue follow-up: `hermes-tasks-queue.md`
+- Project decision: `hermes-tasks-decisions.md`
+- Reusable workflow: `capabilities-connections-control/recipes/approval-gated-account-page-automation.md`
+
 ## Runtime References
 
 - Active Hermes profile: `/home/guidingl/.hermes/profiles/banebook/`

@@ -2,6 +2,16 @@
 
 Newest entries first. AI-facing, concise, and evidence-oriented. Do not store secrets or raw session dumps here.
 
+## 2026-06-12T16:26:51-06:00 - Verify account changes against provider state when SPA tables stay stale
+
+Lesson: After an account-page action succeeds, a single-page app table can remain stale or repaint old toggle states after reload. Do not repeat a billing/account toggle solely because the visible table still looks unchanged.
+
+Why it matters: Re-clicking stale UI can undo or confuse a completed account change. For billing/domain cleanup, stronger evidence comes from the provider's success response, renewal/backend APIs, filter counts, official records, and live service checks.
+
+Evidence: Bluehost accepted the auto-renew disable flow for SiteLock Essentials and WordPress Basic Hosting tied to `locallytwisted.com` and showed processing notices. The visible Bluehost Angular Billing Center table later still painted old on-state switches, but the Renewal Center/API reported `AutoRenewOn=0`, `AutoRenewOff=1`, and WordPress Basic Hosting `autoRenew=false`.
+
+Guardrail: Document only product names, public domains, status outcomes, and verification methods. Do not write raw emails, account IDs, payment details, personal contact fields, cookies, tokens, screenshots of sensitive pages, or raw browser/session dumps into project docs, capabilities, skills, or memory.
+
 ## 2026-06-11T22:37:43-06:00 - Verify SSH handoff keys by fingerprint before authorizing
 
 Lesson: When another agent hands off an SSH unblock request, compute the fingerprint from the exact public key line locally before editing `authorized_keys`, then verify access from the requesting machine.

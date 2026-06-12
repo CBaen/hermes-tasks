@@ -1,6 +1,6 @@
 # Hermes Tasks Status
 
-Last updated: 2026-06-11T22:37:43-06:00
+Last updated: 2026-06-12T16:26:51-06:00
 
 ## What this is
 
@@ -17,8 +17,8 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 - Remote: `https://github.com/CBaen/hermes-tasks`.
 - Current publish truth: use live `git status -sb` and `HOME=/home/guidingl git ls-remote --heads origin main`; do not rely on embedded SHAs as current after new commits.
 - Current source-of-truth entrypoint: `SOURCE-OF-TRUTH.md`.
-- Main active work: Keep source-of-truth docs timestamped/in parity and add only verified connection/control capabilities.
-- Current blockers: messaging/notification has no connected targets; Slack manifest is prepared but account/platform linking is still required. Old empty test browser profile cleanup requires explicit deletion approval.
+- Main active work: Keep source-of-truth docs timestamped/in parity, add only verified connection/control capabilities, and preserve the current Locally Twisted vendor cleanup truth for future agents.
+- Current blockers: messaging/notification has no connected targets; Slack manifest is prepared but account/platform linking is still required. Old empty test browser profile cleanup requires explicit deletion approval. GoDaddy access for `locallytwisted.com` is blocked by EdgeSuite/504-style login errors; do not cancel or close GoDaddy until the domain registration path is intentionally handled.
 
 ## Active workstreams
 
@@ -26,6 +26,7 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 |---|---|---|---|---|
 | source-of-truth-parity | Timestamp policy, authority order, and parity verifier | Implemented and published | Hermes WebUI session 2026-06-11 | Parity checker passing |
 | connections-control | Internet/browser/control stack plus Wardenclyffe bridge | Implemented with verified-only cards | Hermes WebUI session 2026-06-11 | Browser stack, Wardenclyffe bidirectional SSH, and PATH bridge verified locally |
+| locallytwisted-domain-hosting-cleanup | Keep `locallytwisted.com` live on Cloudflare/Frappe while retiring unneeded Bluehost renewals and preserving registrar safety | Bluehost auto-renew disabled; GoDaddy registrar/access follow-up queued | Hermes WebUI session 2026-06-12 | Cloudflare DNS/MX, Frappe Cloud live site, Bluehost Renewal Center API, and RDAP checked |
 
 ## Required project package
 
@@ -69,6 +70,9 @@ Checked this session:
 - Agent-only browser profile remains reachable on `9223`.
 - 2026-06-11T18:17:03-06:00: PATH bridge verified: `hermes-agent-brave-status` and `wardenclyffe-ssh` resolve by name and smoke checks passed.
 - GitHub auth for publish works with `HOME=/home/guidingl`.
+- 2026-06-12T16:26:51-06:00: `locallytwisted.com` public service posture verified: Cloudflare is authoritative DNS, Cloudflare MX is present, and Frappe Cloud serves the live site.
+- 2026-06-12T16:26:51-06:00: Bluehost auto-renew cleanup completed after explicit user approval for the two products tied to `locallytwisted.com`: SiteLock Essentials and WordPress Basic Hosting. Bluehost showed processing notices; Renewal Center/API verification showed `AutoRenewOn=0`, `AutoRenewOff=1`, and WordPress Basic Hosting `autoRenew=false`. The visible Bluehost Angular table/cache remained stale, so future agents should verify backend/API state before retrying.
+- 2026-06-12T16:26:51-06:00: GoDaddy still appears to be the registrar for `locallytwisted.com` with expiration `2027-05-19`; login/access remained blocked by GoDaddy/Akamai EdgeSuite/504-style errors. GoDaddy cleanup remains a queued follow-up, not complete.
 
 Expected validation commands:
 
@@ -81,4 +85,4 @@ python /home/guidingl/projects/capabilities-framework/tools/validate_capability_
 
 ## Next safest move
 
-Next non-blocked work is to keep docs/capabilities in timestamp parity as new facts are verified. Messaging delivery remains blocked until the user completes platform linking (recommended prepared path: Slack). Do not delete the old test profile without explicit approval.
+Next non-blocked work is to keep docs/capabilities in timestamp parity as new facts are verified. Messaging delivery remains blocked until the user completes platform linking (recommended prepared path: Slack). Do not delete the old test profile without explicit approval. For Locally Twisted, next safe work is to recover GoDaddy access, check only non-domain GoDaddy products for cancellation, and preserve domain registration until Cloudflare Registrar transfer or an explicit registrar decision is complete.

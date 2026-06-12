@@ -26,6 +26,7 @@
 ## Recipes
 
 - [Agent-Only Browser Lane](recipes/agent-only-browser-lane.md) - verified separate Brave profile on port `9223` for independent Uma browsing without cluttering the user's live tabs.
+- [Approval-Gated Account Page Automation](recipes/approval-gated-account-page-automation.md) - verified workflow for logged-in account-page inspection and narrowly approved account actions without leaking private account data.
 
 ## Ingredients
 

@@ -2,6 +2,16 @@
 
 Newest entries first.
 
+## 2026-06-12T16:26:51-06:00 - Disable Bluehost auto-renew while preserving Locally Twisted registrar safety
+
+Decision: Turn off auto-renew for Bluehost SiteLock Essentials and WordPress Basic Hosting tied to `locallytwisted.com`, and keep GoDaddy registrar cleanup separate until domain registration is transferred or intentionally retained.
+
+Reason: Public verification showed Cloudflare is authoritative DNS, Cloudflare MX is present, and Frappe Cloud serves the live site, so the Bluehost hosting/security renewals were not needed for the current live website. Registrar/ownership renewal is a separate control plane; GoDaddy still appeared to be registrar, so cancelling/closing GoDaddy would risk domain ownership if done before transfer or explicit registrar decision.
+
+Evidence: User explicitly approved disabling Bluehost auto-renew for both named products. Bluehost confirmation flows completed and showed processing notices. Bluehost Renewal Center/API verification showed `AutoRenewOn=0`, `AutoRenewOff=1`, and WordPress Basic Hosting `autoRenew=false`, while the visible Angular table/cache remained stale. RDAP verification showed GoDaddy still appeared to be registrar with expiration `2027-05-19`; GoDaddy access remained blocked by EdgeSuite/504-style login errors.
+
+Rollback / next: Re-enable or repurchase Bluehost products only if intentionally needed. Recover GoDaddy access, check only non-domain GoDaddy products for cancellation, and preserve domain registration until Cloudflare Registrar transfer or explicit registrar decision is complete.
+
 ## 2026-06-11T22:37:43-06:00 - Authorize exact Wardenclyffe public key for reverse SSH into Banebook
 
 Decision: Follow the Wardenclyffe handoff and add only the exact public key ending `wardenclyffe-1-to-banebook-tailscale-2026-06-11` to Banebook `/home/guidingl/.ssh/authorized_keys`.

@@ -10,6 +10,7 @@ currently_true: verified
 last_verified: 2026-06-11
 used_by:
   - internet-and-browser-control-stack
+  - approval-gated-account-page-automation
 tags:
   - banebook
   - hermes

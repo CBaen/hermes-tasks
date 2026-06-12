@@ -1,6 +1,6 @@
 # Agent Lane Board
 
-Last updated: 2026-06-11T22:37:43-06:00
+Last updated: 2026-06-12T16:26:51-06:00
 
 ## Purpose
 
@@ -21,7 +21,7 @@ Give every agent a fast view of active lanes, write scopes, owners, and handoff 
 | Lane | Owner | Write scope | Handoff | Status | Last update |
 |---|---|---|---|---|---|
 | source-of-truth-parity | current Hermes session | `SOURCE-OF-TRUTH.md`, root docs, verifier manifest, agent-infrastructure capability, parity script | `HANDOFF.md` | Maintained; PATH bridge verified | 2026-06-11T18:17:03-06:00 |
-| connections-control | current Hermes session | `capabilities-connections-control/`, connection/control docs, lane handoff | `agent-lanes/connections-control-HANDOFF.md` | Wardenclyffe bidirectional SSH verified; messaging prepared but not connected | 2026-06-11T22:37:43-06:00 |
+| connections-control | current Hermes session | `capabilities-connections-control/`, connection/control docs, lane handoff | `agent-lanes/connections-control-HANDOFF.md` | Account-page automation recipe added; messaging prepared but not connected | 2026-06-12T16:26:51-06:00 |
 
 ## Coordination Notes
 
@@ -44,13 +44,13 @@ TS:2026-06-11T17:52:58-06:00 | Check:stale docs found and parity policy/checker 
 
 ### connections-control
 
-TS:2026-06-11T22:37:43-06:00 | Check:Wardenclyffe reverse SSH, Slack manifest, messaging discovery | Confidence:high
+TS:2026-06-12T16:26:51-06:00 | Check:approval-gated account-page automation recipe and graph validation | Confidence:high
 
-- Status: Browser stack implemented; Wardenclyffe bidirectional SSH verified; messaging prepared but not connected.
-- Current focus: publish current docs/capability parity; wait for user account linking for messaging.
-- Latest changed files: `capabilities-connections-control/INDEX.md`, `capabilities-connections-control/ingredients/wardenclyffe-kubuntu-ssh-bridge.md`, `agent-lanes/connections-control-HANDOFF.md`.
-- Latest validation: Wardenclyffe reverse SSH succeeded; Slack manifest validates; no messaging targets discovered.
-- Blockers: messaging needs a connected platform. PATH bridge is now fixed for helper command discovery.
+- Status: Browser stack implemented; Wardenclyffe bidirectional SSH verified; approval-gated logged-in account-page automation recipe added; messaging prepared but not connected.
+- Current focus: publish current docs/capability parity; wait for user account linking for messaging; keep GoDaddy registrar follow-up queued.
+- Latest changed files: `capabilities-connections-control/INDEX.md`, `capabilities-connections-control/recipes/approval-gated-account-page-automation.md`, ingredient backlinks, `agent-lanes/connections-control-HANDOFF.md`.
+- Latest validation: connections/control capability graph ok=true with 9 cards, 0 errors, 0 warnings.
+- Blockers: messaging needs a connected platform. GoDaddy access for `locallytwisted.com` is blocked by EdgeSuite/504-style errors and must be handled without risking domain registration.
 
 ## Done / Closed Lanes
 

@@ -1,6 +1,6 @@
 # Connections Control Lane
 
-TS:2026-06-11T22:37:43-06:00 | Check:Wardenclyffe reverse SSH, Slack manifest, messaging discovery | Confidence:high
+TS:2026-06-12T16:26:51-06:00 | Check:approval-gated account-page automation recipe and graph validation | Confidence:high
 
 ## Scope
 
@@ -13,7 +13,7 @@ Make Uma/Hermes better connected and able to execute internet/browser/remote-con
 
 ## Current Status
 
-Status: Implemented and expanded with verified Wardenclyffe bidirectional SSH; messaging prepared but not connected.
+Status: Implemented and expanded with verified Wardenclyffe bidirectional SSH and approval-gated logged-in account-page automation; messaging prepared but not connected.
 
 ## Changed Files
 
@@ -25,6 +25,7 @@ Status: Implemented and expanded with verified Wardenclyffe bidirectional SSH; m
 - `capabilities-connections-control/ingredients/wardenclyffe-kubuntu-ssh-bridge.md`
 - `capabilities-connections-control/ingredients/wardenclyffe-to-banebook-ssh-access.md`
 - `capabilities-connections-control/recipes/agent-only-browser-lane.md`
+- `capabilities-connections-control/recipes/approval-gated-account-page-automation.md`
 - `capabilities-connections-control/meals/internet-and-browser-control-stack.md`
 - Root docs that route/record this work: `README.md`, `PROJECT-STATUS.md`, `hermes-tasks-index.md`, `hermes-tasks-decisions.md`, `GLOBAL-DECISIONS.md`, `LESSONS-LEARNED.md`, `HANDOFF.md`, `SOURCE-OF-TRUTH.md`.
 
@@ -60,7 +61,7 @@ Hermes terminal PATH bridge is now active through `/home/guidingl/.hermes/profil
 Latest known checks:
 
 - Project shape validator: ok=true, 0 errors, 0 warnings.
-- Connections/control capability graph: ok=true, 7 cards, 0 errors, 0 warnings.
+- Connections/control capability graph: ok=true, 9 cards, 0 errors, 0 warnings on 2026-06-12T16:26:51-06:00.
 - Agent-only CDP lane: `127.0.0.1:9223` reachable.
 - User/live CDP lane: `127.0.0.1:9222` reachable.
 - Agent-only browser control proof: inserted/read back `Hermes agent profile typed this via CDP` in earlier session.
@@ -68,12 +69,14 @@ Latest known checks:
 - Wardenclyffe status: Tailscale ping, TCP 22, and SSH inventory succeeded; current OS is Kubuntu/Linux, not retired Windows PowerShell workflow.
 - Wardenclyffe -> Banebook reverse SSH succeeded after exact key authorization from the Wardenclyffe handoff.
 - PATH bridge: `hermes-agent-brave-status` and `wardenclyffe-ssh` resolve by name and smoke checks passed on 2026-06-11T18:17:03-06:00.
+- Logged-in account-page automation: user/live Brave CDP inspected Bluehost/Gmail/GoDaddy tabs; after explicit approval, Bluehost auto-renew was disabled for SiteLock Essentials and WordPress Basic Hosting tied to `locallytwisted.com`; Renewal Center/API verified auto-renew off while the visible table remained stale.
 
 ## Remaining Debt
 
 - Add a real notification/messaging capability only after a platform target is connected and verified. Prepared path: Slack manifest plus user-installed app/tokens.
 - Decide whether to keep, ignore, or delete the old 63M test profile under Hermes internal profile-home path; do not delete without explicit approval.
+- Recover GoDaddy access for `locallytwisted.com`; do not risk domain registration while checking cancellable non-domain GoDaddy products.
 
 ## Handoff Notes
 
-Use the agent-only browser lane for public research and independent browsing. Use the user/live lane only when the user needs help with a page already open in their normal Brave session, especially logged-in account pages. Use Wardenclyffe only through verified Linux/SSH helpers and keep risky remote actions behind approval gates.
+Use the agent-only browser lane for public research and independent browsing. Use the user/live lane only when the user needs help with a page already open in their normal Brave session, especially logged-in account pages. For account pages, follow `capabilities-connections-control/recipes/approval-gated-account-page-automation.md`: verify live/public state first, target only named products/accounts, get explicit approval before external account changes, and verify provider/backend state when UI tables are stale. Use Wardenclyffe only through verified Linux/SSH helpers and keep risky remote actions behind approval gates.

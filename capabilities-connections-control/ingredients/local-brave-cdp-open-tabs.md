@@ -10,6 +10,7 @@ currently_true: verified
 last_verified: 2026-06-11
 used_by:
   - agent-only-browser-lane
+  - approval-gated-account-page-automation
   - browser-protocol-page-control-and-typing
   - internet-and-browser-control-stack
 tags:
