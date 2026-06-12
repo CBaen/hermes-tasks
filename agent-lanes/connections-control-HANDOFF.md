@@ -1,6 +1,6 @@
 # Connections Control Lane
 
-TS:2026-06-11T18:17:03-06:00 | Check:PATH bridge plus Wardenclyffe/browser helper smoke checks | Confidence:high
+TS:2026-06-11T22:37:43-06:00 | Check:Wardenclyffe reverse SSH, Slack manifest, messaging discovery | Confidence:high
 
 ## Scope
 
@@ -13,7 +13,7 @@ Make Uma/Hermes better connected and able to execute internet/browser/remote-con
 
 ## Current Status
 
-Status: Implemented and expanded with verified Wardenclyffe Kubuntu SSH bridge.
+Status: Implemented and expanded with verified Wardenclyffe bidirectional SSH; messaging prepared but not connected.
 
 ## Changed Files
 
@@ -23,9 +23,15 @@ Status: Implemented and expanded with verified Wardenclyffe Kubuntu SSH bridge.
 - `capabilities-connections-control/ingredients/browser-protocol-page-control-and-typing.md`
 - `capabilities-connections-control/ingredients/desktop-input-control-boundary.md`
 - `capabilities-connections-control/ingredients/wardenclyffe-kubuntu-ssh-bridge.md`
+- `capabilities-connections-control/ingredients/wardenclyffe-to-banebook-ssh-access.md`
 - `capabilities-connections-control/recipes/agent-only-browser-lane.md`
 - `capabilities-connections-control/meals/internet-and-browser-control-stack.md`
 - Root docs that route/record this work: `README.md`, `PROJECT-STATUS.md`, `hermes-tasks-index.md`, `hermes-tasks-decisions.md`, `GLOBAL-DECISIONS.md`, `LESSONS-LEARNED.md`, `HANDOFF.md`, `SOURCE-OF-TRUTH.md`.
+
+## Messaging Artifacts
+
+- `artifacts/messaging/hermes-slack-manifest.json` - generated Slack manifest, no tokens.
+- `artifacts/messaging/messaging-options-2026-06-11.md` - Slack/WhatsApp/Signal setup assessment.
 
 ## Runtime Files Created Outside Repo
 
@@ -58,13 +64,14 @@ Latest known checks:
 - Agent-only CDP lane: `127.0.0.1:9223` reachable.
 - User/live CDP lane: `127.0.0.1:9222` reachable.
 - Agent-only browser control proof: inserted/read back `Hermes agent profile typed this via CDP` in earlier session.
-- Messaging target discovery: `send_message(action="list")` returned no connected targets.
+- Messaging target discovery: `send_message(action="list")` returned no connected targets; Slack manifest validates but user account/app linking is still required.
 - Wardenclyffe status: Tailscale ping, TCP 22, and SSH inventory succeeded; current OS is Kubuntu/Linux, not retired Windows PowerShell workflow.
+- Wardenclyffe -> Banebook reverse SSH succeeded after exact key authorization from the Wardenclyffe handoff.
 - PATH bridge: `hermes-agent-brave-status` and `wardenclyffe-ssh` resolve by name and smoke checks passed on 2026-06-11T18:17:03-06:00.
 
 ## Remaining Debt
 
-- Add a real notification/messaging capability only after a platform target is connected and verified.
+- Add a real notification/messaging capability only after a platform target is connected and verified. Prepared path: Slack manifest plus user-installed app/tokens.
 - Decide whether to keep, ignore, or delete the old 63M test profile under Hermes internal profile-home path; do not delete without explicit approval.
 
 ## Handoff Notes

@@ -1,6 +1,6 @@
 # Hermes Tasks Source Of Truth
 
-Last updated: 2026-06-11T18:17:03-06:00
+Last updated: 2026-06-11T22:37:43-06:00
 
 ## Purpose
 
@@ -72,3 +72,5 @@ If the check fails because the worktree is intentionally dirty before commit, fi
 - Agent-only Brave CDP lane: `http://127.0.0.1:9223`
 - Hermes terminal PATH bridge: active via `/home/guidingl/.hermes/profiles/banebook/terminal-path-bridge.sh`; helper command names now resolve in new terminal calls.
 - Wardenclyffe helper scripts: `/home/guidingl/bin/wardenclyffe-*`; command names now resolve through the PATH bridge, with absolute paths still safe as fallback.
+- Wardenclyffe -> Banebook reverse SSH: verified on 2026-06-11T22:37:43-06:00 after authorizing the Wardenclyffe public key fingerprint `SHA256:Cl5SYra87E5eyA/cy4PWPDAj1aoYm9HmxYLU0hhzmGM` on Banebook.
+- Messaging/notification: no connected targets yet; Slack manifest prepared at `artifacts/messaging/hermes-slack-manifest.json`; account/platform linking still required before delivery works.

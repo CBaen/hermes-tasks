@@ -1,6 +1,6 @@
 # Hermes Tasks Handoff
 
-TS:2026-06-11T18:17:03-06:00 | Check:PATH bridge verified and publish continuation | Confidence:high
+TS:2026-06-11T22:37:43-06:00 | Check:Wardenclyffe reverse SSH verification and messaging prep | Confidence:high
 
 ## Current state
 
@@ -25,6 +25,15 @@ TS:2026-06-11T18:17:03-06:00 | Check:PATH bridge verified and publish continuati
 7. Added `capabilities-connections-control/ingredients/wardenclyffe-kubuntu-ssh-bridge.md`.
 8. Verified and documented the Hermes terminal PATH bridge so helper commands resolve by name in new terminal calls.
 
+
+## 2026-06-11T22:37:43-06:00 continuation
+
+- Followed Wardenclyffe handoff `agent-coordination/wardenclyffe-kubuntu-restore/handoffs/banebook-ssh-unblock-2026-06-11.md`.
+- Added only the exact verified Wardenclyffe public key to Banebook `/home/guidingl/.ssh/authorized_keys`; fingerprint `SHA256:Cl5SYra87E5eyA/cy4PWPDAj1aoYm9HmxYLU0hhzmGM`.
+- Wardenclyffe-side `ssh -o BatchMode=yes banebook` verification succeeded and returned `BANEBOOK`, `guidingl`, and expected Codex framework skills.
+- Regenerated and validated Slack manifest at `artifacts/messaging/hermes-slack-manifest.json`.
+- Messaging target discovery still finds no connected targets; Slack/WhatsApp/Signal require user-side account linking before delivery works.
+
 ## Current verified browser/control state
 
 - User/live Brave CDP lane: `http://127.0.0.1:9222`
@@ -41,6 +50,7 @@ TS:2026-06-11T18:17:03-06:00 | Check:PATH bridge verified and publish continuati
 - Use `9223` for independent public browsing and control tests.
 - Prefer CDP/DOM/API/CLI/file artifacts over `xdotool` or `ydotool`.
 - Wardenclyffe is currently verified as Kubuntu/Linux over SSH; do not rely on stale Windows/PowerShell assumptions.
+- Wardenclyffe reverse SSH into Banebook is now authorized for the exact handoff key; do not add more keys or weaken SSH settings without explicit approval.
 - Still stop before final external actions: submissions, messages, uploads, account/security changes, payments, signatures, loan acceptance, production deployments, destructive deletes, Docker pruning, backup removal, reboots, or service stops.
 
 ## Publish/GitHub status
@@ -59,6 +69,6 @@ python /home/guidingl/projects/capabilities-framework/tools/validate_capability_
 
 ## Remaining work
 
-- Add messaging/notification capability only after a real platform is connected and verified.
+- Add messaging/notification capability only after a real platform is connected and verified. Prepared path is Slack manifest + user-provided Slack tokens/app install.
 - Decide whether to delete the old 63M test profile at `/home/guidingl/.hermes/profiles/banebook/home/.local/share/hermes/agent-brave-profile`; do not delete without explicit approval.
 - Keep `SOURCE-OF-TRUTH.md` and parity docs current whenever state changes.

@@ -2,6 +2,26 @@
 
 Newest entries first.
 
+## 2026-06-11T22:37:43-06:00 - Authorize exact Wardenclyffe public key for reverse SSH into Banebook
+
+Decision: Follow the Wardenclyffe handoff and add only the exact public key ending `wardenclyffe-1-to-banebook-tailscale-2026-06-11` to Banebook `/home/guidingl/.ssh/authorized_keys`.
+
+Reason: The Wardenclyffe agent identified that Wardenclyffe could reach Banebook over Tailscale/OpenSSH but Banebook rejected Wardenclyffe's configured public key. The user directed this agent to follow that handoff.
+
+Evidence: Fingerprint matched `SHA256:Cl5SYra87E5eyA/cy4PWPDAj1aoYm9HmxYLU0hhzmGM`; `authorized_keys` permissions are `600`; Wardenclyffe-side `ssh -o BatchMode=yes banebook` returned `BANEBOOK`, `guidingl`, and expected framework skill paths.
+
+Rollback: Remove the `authorized_keys` line ending `wardenclyffe-1-to-banebook-tailscale-2026-06-11` or restore the timestamped `authorized_keys.bak-wardenclyffe-unblock-*` backup.
+
+## 2026-06-11T22:37:43-06:00 - Prepare Slack first for Hermes notifications, park WhatsApp/Signal until user linking
+
+Decision: Keep Slack as the best-prepared notification path because the Hermes Slack manifest is generated and Socket Mode does not need a public endpoint. WhatsApp and Signal remain assessed but blocked on user account/device linking.
+
+Reason: Slack manifest generation is local and non-secret. WhatsApp requires QR pairing and carries unofficial bridge risk; Signal requires installing/linking `signal-cli`. All three require user-side account steps before real delivery.
+
+Evidence: `artifacts/messaging/hermes-slack-manifest.json` validates with `socket_mode_enabled=true`, 50 slash commands, and 14 bot scopes; `send_message(action=list)` and `hermes send --list` report no connected targets.
+
+Rollback: Delete or regenerate the Slack manifest artifact. Do not remove any real messaging integration without checking live gateway config first.
+
 ## 2026-06-11T18:17:03-06:00 - Use a profile-local terminal PATH bridge for Banebook helper commands
 
 Decision: Expose `/home/guidingl/.local/bin` and `/home/guidingl/bin` to Hermes terminal calls through the Banebook profile's `terminal.shell_init_files` and `/home/guidingl/.hermes/profiles/banebook/terminal-path-bridge.sh`.

@@ -45,3 +45,10 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 ## Publishing target
 
 - GitHub target requested by Guiding Light: `https://github.com/CBaen/hermes-tasks`
+
+## Messaging Setup Artifacts
+
+- `artifacts/messaging/hermes-slack-manifest.json` - prepared Slack app manifest; no tokens.
+- `artifacts/messaging/messaging-options-2026-06-11.md` - current Slack/WhatsApp/Signal setup assessment.
+
+Messaging delivery is not live until a platform account/app is linked and Hermes discovers a target.

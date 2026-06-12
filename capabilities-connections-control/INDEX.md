@@ -34,6 +34,7 @@
 - [Browser Protocol Page Control And Typing](ingredients/browser-protocol-page-control-and-typing.md) - verified DOM/CDP reading, focusing, and text entry without physical keyboard or mouse takeover.
 - [Desktop Input Control Boundary](ingredients/desktop-input-control-boundary.md) - verified desktop input tools exist, with last-resort safety boundary.
 - [Wardenclyffe Kubuntu SSH Bridge](ingredients/wardenclyffe-kubuntu-ssh-bridge.md) - verified Tailscale/SSH status bridge to Wardenclyffe; current target is Kubuntu/Linux, not the retired Windows PowerShell workflow.
+- [Wardenclyffe To Banebook SSH Access](ingredients/wardenclyffe-to-banebook-ssh-access.md) - verified reverse SSH from Wardenclyffe into Banebook after user-directed key authorization.
 
 ## Meals
 

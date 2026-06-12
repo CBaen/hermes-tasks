@@ -1,6 +1,6 @@
 # Hermes Tasks Status
 
-Last updated: 2026-06-11T18:17:03-06:00
+Last updated: 2026-06-11T22:37:43-06:00
 
 ## What this is
 
@@ -18,14 +18,14 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 - Current publish truth: use live `git status -sb` and `HOME=/home/guidingl git ls-remote --heads origin main`; do not rely on embedded SHAs as current after new commits.
 - Current source-of-truth entrypoint: `SOURCE-OF-TRUTH.md`.
 - Main active work: Keep source-of-truth docs timestamped/in parity and add only verified connection/control capabilities.
-- Current blockers: messaging/notification has no connected targets; old empty test browser profile cleanup requires explicit deletion approval. PATH bridge is now verified for helper command discovery.
+- Current blockers: messaging/notification has no connected targets; Slack manifest is prepared but account/platform linking is still required. Old empty test browser profile cleanup requires explicit deletion approval.
 
 ## Active workstreams
 
 | Workstream | Outcome | Status | Owner / session | Verification state |
 |---|---|---|---|---|
 | source-of-truth-parity | Timestamp policy, authority order, and parity verifier | Implemented and published | Hermes WebUI session 2026-06-11 | Parity checker passing |
-| connections-control | Internet/browser/control stack plus Wardenclyffe bridge | Implemented with verified-only cards | Hermes WebUI session 2026-06-11 | Browser stack, Wardenclyffe status, and PATH bridge verified locally |
+| connections-control | Internet/browser/control stack plus Wardenclyffe bridge | Implemented with verified-only cards | Hermes WebUI session 2026-06-11 | Browser stack, Wardenclyffe bidirectional SSH, and PATH bridge verified locally |
 
 ## Required project package
 
@@ -63,7 +63,9 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 Checked this session:
 
 - Messaging delivery targets: none connected/discovered via `send_message(action="list")`.
+- Slack manifest regenerated/validated at `artifacts/messaging/hermes-slack-manifest.json`; WhatsApp and Signal remain account-linking/setup paths.
 - Wardenclyffe status: Tailscale/SSH reachable; current target `WARDENCLYFFE` is Linux/Kubuntu, not retired Windows PowerShell workflow.
+- Wardenclyffe reverse SSH from Wardenclyffe into Banebook is verified after user-directed key authorization.
 - Agent-only browser profile remains reachable on `9223`.
 - 2026-06-11T18:17:03-06:00: PATH bridge verified: `hermes-agent-brave-status` and `wardenclyffe-ssh` resolve by name and smoke checks passed.
 - GitHub auth for publish works with `HOME=/home/guidingl`.
@@ -79,4 +81,4 @@ python /home/guidingl/projects/capabilities-framework/tools/validate_capability_
 
 ## Next safest move
 
-Next non-blocked work is to keep docs/capabilities in timestamp parity as new facts are verified. Add notification capability only after a real messaging platform is connected. Do not delete the old test profile without explicit approval.
+Next non-blocked work is to keep docs/capabilities in timestamp parity as new facts are verified. Messaging delivery remains blocked until the user completes platform linking (recommended prepared path: Slack). Do not delete the old test profile without explicit approval.

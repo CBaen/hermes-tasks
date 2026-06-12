@@ -2,6 +2,22 @@
 
 Newest entries first. AI-facing, concise, and evidence-oriented. Do not store secrets or raw session dumps here.
 
+## 2026-06-11T22:37:43-06:00 - Verify SSH handoff keys by fingerprint before authorizing
+
+Lesson: When another agent hands off an SSH unblock request, compute the fingerprint from the exact public key line locally before editing `authorized_keys`, then verify access from the requesting machine.
+
+Why it matters: SSH key authorization is an account-security change. Matching the fingerprint and comment prevents adding the wrong key while keeping the action narrow and reversible.
+
+Evidence: Wardenclyffe handoff fingerprint `SHA256:Cl5SYra87E5eyA/cy4PWPDAj1aoYm9HmxYLU0hhzmGM` matched locally; Wardenclyffe then SSHed into Banebook successfully.
+
+## 2026-06-11T22:37:43-06:00 - Messaging setup can be prepared without making delivery live
+
+Lesson: For Hermes messaging, generating/validating a Slack manifest is safe local prep, but Slack/WhatsApp/Signal are not real notification capabilities until a platform target is connected and `send_message(action=list)` discovers it.
+
+Why it matters: A manifest or installed prerequisite is not delivery. Keep capability cards blocked/candidate until a message target exists and a send/list check proves it.
+
+Evidence: Slack manifest validated locally; no targets were discovered by Hermes send/list tools.
+
 ## 2026-06-11T18:17:03-06:00 - Verify Hermes config value types after `hermes config set`
 
 Lesson: For list-valued Hermes config keys, verify the YAML type after using `hermes config set`. In this session, setting `terminal.shell_init_files` with a JSON-looking list wrote a string, and then indexed set produced a mapping because it started from that wrong type.

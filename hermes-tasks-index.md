@@ -73,3 +73,8 @@ Use this for references, research, source maps, and durable pointers. Do not use
 
 - GitHub target requested by user: `https://github.com/CBaen/hermes-tasks`
 - Hermes docs used for browser verification: `https://hermes-agent.nousresearch.com/docs/user-guide/features/browser`
+
+## Messaging Artifacts
+
+- `artifacts/messaging/hermes-slack-manifest.json` - generated Slack app manifest, no tokens.
+- `artifacts/messaging/messaging-options-2026-06-11.md` - current WhatsApp/Signal/Slack setup assessment.

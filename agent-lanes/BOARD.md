@@ -1,6 +1,6 @@
 # Agent Lane Board
 
-Last updated: 2026-06-11T18:17:03-06:00
+Last updated: 2026-06-11T22:37:43-06:00
 
 ## Purpose
 
@@ -21,7 +21,7 @@ Give every agent a fast view of active lanes, write scopes, owners, and handoff 
 | Lane | Owner | Write scope | Handoff | Status | Last update |
 |---|---|---|---|---|---|
 | source-of-truth-parity | current Hermes session | `SOURCE-OF-TRUTH.md`, root docs, verifier manifest, agent-infrastructure capability, parity script | `HANDOFF.md` | Maintained; PATH bridge verified | 2026-06-11T18:17:03-06:00 |
-| connections-control | current Hermes session | `capabilities-connections-control/`, connection/control docs, lane handoff | `agent-lanes/connections-control-HANDOFF.md` | Wardenclyffe helper names now resolve through PATH bridge | 2026-06-11T18:17:03-06:00 |
+| connections-control | current Hermes session | `capabilities-connections-control/`, connection/control docs, lane handoff | `agent-lanes/connections-control-HANDOFF.md` | Wardenclyffe bidirectional SSH verified; messaging prepared but not connected | 2026-06-11T22:37:43-06:00 |
 
 ## Coordination Notes
 
@@ -44,12 +44,12 @@ TS:2026-06-11T17:52:58-06:00 | Check:stale docs found and parity policy/checker 
 
 ### connections-control
 
-TS:2026-06-11T17:52:58-06:00 | Check:`/home/guidingl/bin/wardenclyffe-status` and `send_message(action=list)` | Confidence:high
+TS:2026-06-11T22:37:43-06:00 | Check:Wardenclyffe reverse SSH, Slack manifest, messaging discovery | Confidence:high
 
-- Status: Browser stack already implemented; Wardenclyffe bridge added; messaging remains unavailable.
-- Current focus: no further connection/control changes until commit/push completes.
+- Status: Browser stack implemented; Wardenclyffe bidirectional SSH verified; messaging prepared but not connected.
+- Current focus: publish current docs/capability parity; wait for user account linking for messaging.
 - Latest changed files: `capabilities-connections-control/INDEX.md`, `capabilities-connections-control/ingredients/wardenclyffe-kubuntu-ssh-bridge.md`, `agent-lanes/connections-control-HANDOFF.md`.
-- Latest validation: Wardenclyffe Tailscale/SSH status succeeded; no messaging targets discovered.
+- Latest validation: Wardenclyffe reverse SSH succeeded; Slack manifest validates; no messaging targets discovered.
 - Blockers: messaging needs a connected platform. PATH bridge is now fixed for helper command discovery.
 
 ## Done / Closed Lanes

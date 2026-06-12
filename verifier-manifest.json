@@ -218,6 +218,57 @@
         "Wardenclyffe SSH read-only hostname/uname succeeds"
       ],
       "what_it_does_not_prove": "It does not prove all helper commands or remote operations are safe."
+    },
+    {
+      "id": "wardenclyffe-to-banebook-ssh-check",
+      "tier": "tier_3_staging_or_private",
+      "graduation_stage": "verifier_backed",
+      "graduation_status": "candidate",
+      "command": "wardenclyffe-ssh 'ssh -o BatchMode=yes banebook \"hostname; whoami\"'",
+      "cwd": ".",
+      "scope": "Verifies Wardenclyffe can SSH back into Banebook over the user-directed authorized key.",
+      "environment": "Banebook plus Wardenclyffe over Tailscale",
+      "mutation": "none after key is already authorized",
+      "approval_required": "yes before adding/changing authorized_keys; no for read-only hostname/whoami verification after setup",
+      "requires_explicit_approval": false,
+      "runs_automatically": false,
+      "evidence_artifact": "terminal output in active session or connections-control handoff",
+      "capability_refs": [
+        "capabilities-connections-control/ingredients/wardenclyffe-to-banebook-ssh-access.md"
+      ],
+      "risk_triggers": [
+        "raise tier and require explicit approval before adding more keys, changing SSH auth policy, or editing Banebook files remotely"
+      ],
+      "proves": [
+        "Wardenclyffe can authenticate to Banebook as guidingl over SSH",
+        "reverse coordination path is available"
+      ],
+      "what_it_does_not_prove": "It does not approve broad remote control of Banebook or any security weakening."
+    },
+    {
+      "id": "slack-manifest-json-check",
+      "tier": "tier_1_local_fast",
+      "graduation_stage": "verifier_backed",
+      "graduation_status": "candidate",
+      "command": "python3 - <<'PY'\nimport json\nj=json.load(open('artifacts/messaging/hermes-slack-manifest.json'))\nassert j['display_information']['name'] == 'Hermes Uma'\nassert j['settings']['socket_mode_enabled'] is True\nassert len(j['features']['slash_commands']) >= 1\nprint('slack_manifest_ok', len(j['features']['slash_commands']))\nPY",
+      "cwd": ".",
+      "scope": "Verifies the prepared Slack app manifest is parseable and has Socket Mode/slash commands.",
+      "environment": "local",
+      "mutation": "none",
+      "approval_required": "no for local parse; yes for Slack app install/token configuration",
+      "requires_explicit_approval": false,
+      "runs_automatically": false,
+      "evidence_artifact": "terminal output in active session or messaging artifact note",
+      "capability_refs": [
+        "artifacts/messaging/messaging-options-2026-06-11.md"
+      ],
+      "risk_triggers": [
+        "raise tier before uploading manifest to Slack, installing app, storing tokens, or sending messages"
+      ],
+      "proves": [
+        "Slack manifest artifact is valid JSON and prepared for user-side setup"
+      ],
+      "what_it_does_not_prove": "It does not prove Slack is connected or that Hermes can send messages."
     }
   ]
 }
