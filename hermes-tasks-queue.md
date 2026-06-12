@@ -4,15 +4,14 @@
 
 | Priority | Workstream | Outcome | Status | Owner | Verification |
 |---|---|---|---|---|---|
-| P0 | source-of-truth-parity | Timestamp contract, authority order, parity checker, and updated docs/capabilities | In progress | current Hermes session | Pending validation/commit/push |
+| P0 | source-of-truth-parity | Timestamp contract, authority order, parity checker, and updated docs/capabilities | Done; maintain on every docs/capability change | current/future Hermes sessions | Parity checker passes |
 | P1 | next-verified-capability | Add messaging/notification only after a connected target exists | Blocked on no connected messaging target | future Hermes session | `send_message(action="list")` found no targets on 2026-06-11T17:52:58-06:00 |
-| P1 | wardenclyffe-bridge | Use verified Wardenclyffe Kubuntu SSH bridge by absolute helper paths | Implemented as capability card; PATH bridge still optional | future Hermes session | `/home/guidingl/bin/wardenclyffe-status` succeeded on 2026-06-11T17:52:58-06:00 |
+| P1 | wardenclyffe-bridge | Use verified Wardenclyffe Kubuntu SSH bridge through resolved helper commands | Implemented as capability card; PATH bridge verified | future Hermes session | `wardenclyffe-ssh` smoke check succeeded on 2026-06-11T18:17:03-06:00 |
 
 ## Next
 
-- Finish and publish the source-of-truth parity update.
 - Add notification/messaging capability only after an actual target/platform is connected and verified.
-- Optionally add a PATH bridge capability so Hermes can call `/home/guidingl/bin` and `/home/guidingl/.local/bin` helpers without absolute paths.
+- Keep parity checker passing before/after docs/capability publish.
 - Decide whether to keep or delete the old 63M test profile under `/home/guidingl/.hermes/profiles/banebook/home/.local/share/hermes/agent-brave-profile`; do not delete without explicit approval.
 
 ## Parked
@@ -22,6 +21,7 @@
 
 ## Done
 
+- 2026-06-11T18:17:03-06:00: Added and verified profile-local Hermes terminal PATH bridge; helper commands now resolve by name and smoke checks passed for `hermes-agent-brave-status` and `wardenclyffe-ssh`.
 - 2026-06-11T17:52:58-06:00: Added source-of-truth/timestamp parity policy draft, parity checker, and verified Wardenclyffe Kubuntu SSH bridge card; messaging remains blocked with no connected targets.
 - 2026-06-11T17:03:04-06:00: Cleaned stale publish-status wording; remote main verified at `4cc409d8712561f23c5a9a6b082e5edac769271b` before cleanup commit.
 - 2026-06-11T16:44:49-06:00: Resolved GitHub auth path by using `HOME=/home/guidingl`; pushed `main` to `origin` with remote ref `70c83bbb5c746c84ab6c77d1659e25ee87b4fe23` before final status commit.

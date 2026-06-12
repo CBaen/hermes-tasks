@@ -1,6 +1,6 @@
 # Hermes Tasks Source Of Truth
 
-Last updated: 2026-06-11T17:52:58-06:00
+Last updated: 2026-06-11T18:17:03-06:00
 
 ## Purpose
 
@@ -70,4 +70,5 @@ If the check fails because the worktree is intentionally dirty before commit, fi
 - GitHub auth from Hermes terminal: use `HOME=/home/guidingl` for `git`/`gh` network operations.
 - User/live Brave CDP lane: `http://127.0.0.1:9222`
 - Agent-only Brave CDP lane: `http://127.0.0.1:9223`
-- Wardenclyffe helper scripts: `/home/guidingl/bin/wardenclyffe-*`; use absolute paths unless Hermes PATH is fixed.
+- Hermes terminal PATH bridge: active via `/home/guidingl/.hermes/profiles/banebook/terminal-path-bridge.sh`; helper command names now resolve in new terminal calls.
+- Wardenclyffe helper scripts: `/home/guidingl/bin/wardenclyffe-*`; command names now resolve through the PATH bridge, with absolute paths still safe as fallback.

@@ -2,6 +2,16 @@
 
 Newest entries first.
 
+## 2026-06-11T18:17:03-06:00 - Use a profile-local terminal PATH bridge for Banebook helper commands
+
+Decision: Expose `/home/guidingl/.local/bin` and `/home/guidingl/bin` to Hermes terminal calls through the Banebook profile's `terminal.shell_init_files` and `/home/guidingl/.hermes/profiles/banebook/terminal-path-bridge.sh`.
+
+Reason: The Hermes terminal PATH omitted real-user helper directories, so commands such as `hermes-agent-brave-status` and `wardenclyffe-ssh` required absolute paths. A profile-local init file is reversible and avoids changing system-owned PATH directories.
+
+Evidence: On 2026-06-11T18:17:03-06:00, new terminal calls resolved `hermes-agent-brave`, `hermes-agent-cdp`, `hermes-agent-brave-status`, `wardenclyffe-status`, and `wardenclyffe-ssh`; smoke checks passed for `hermes-agent-brave-status` and `wardenclyffe-ssh 'hostname; uname -srm'`.
+
+Rollback: Remove `/home/guidingl/.hermes/profiles/banebook/terminal-path-bridge.sh` from `terminal.shell_init_files` or restore backup `/home/guidingl/.hermes/profiles/banebook/config.yaml.bak-path-bridge-20260611T181644-0600`.
+
 ## 2026-06-11T17:52:58-06:00 - Wardenclyffe current target is Kubuntu SSH, not retired Windows PowerShell
 
 Decision: Document Wardenclyffe's current reachable control surface as Kubuntu/Linux over Tailscale and SSH, while treating older Windows/PowerShell assumptions as stale unless reverified.

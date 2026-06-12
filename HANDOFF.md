@@ -1,6 +1,6 @@
 # Hermes Tasks Handoff
 
-TS:2026-06-11T17:52:58-06:00 | Check:source-of-truth parity continuation after GitHub publish | Confidence:high
+TS:2026-06-11T18:17:03-06:00 | Check:PATH bridge verified and publish continuation | Confidence:high
 
 ## Current state
 
@@ -23,13 +23,16 @@ TS:2026-06-11T17:52:58-06:00 | Check:source-of-truth parity continuation after G
    - Current target is `WARDENCLYFFE` running `Linux 7.0.0-14-generic x86_64`.
    - `/home/guidingl/bin/wardenclyffe-ps` is retired and says to use SSH/Linux commands.
 7. Added `capabilities-connections-control/ingredients/wardenclyffe-kubuntu-ssh-bridge.md`.
+8. Verified and documented the Hermes terminal PATH bridge so helper commands resolve by name in new terminal calls.
 
 ## Current verified browser/control state
 
 - User/live Brave CDP lane: `http://127.0.0.1:9222`
 - Agent-only Brave CDP lane: `http://127.0.0.1:9223`
 - Agent-only profile path: `/home/guidingl/.local/share/hermes/agent-brave-profile`
-- Wardenclyffe helper path: `/home/guidingl/bin/wardenclyffe-*`; use absolute paths unless Hermes PATH is fixed.
+- Hermes terminal PATH bridge: `/home/guidingl/.hermes/profiles/banebook/terminal-path-bridge.sh` is active through `terminal.shell_init_files`.
+- Helper command names now resolve in new terminal calls: `hermes-agent-brave-status`, `hermes-agent-cdp`, `wardenclyffe-status`, `wardenclyffe-ssh`.
+- Absolute helper paths remain safe fallbacks.
 
 ## Guardrails for next agent
 
@@ -56,7 +59,6 @@ python /home/guidingl/projects/capabilities-framework/tools/validate_capability_
 
 ## Remaining work
 
-- Finish validation, commit, push, and verify remote `main` for this parity update.
 - Add messaging/notification capability only after a real platform is connected and verified.
 - Decide whether to delete the old 63M test profile at `/home/guidingl/.hermes/profiles/banebook/home/.local/share/hermes/agent-brave-profile`; do not delete without explicit approval.
-- Optionally fix Hermes PATH or document a reusable PATH bridge so `/home/guidingl/bin/wardenclyffe-*` and `/home/guidingl/.local/bin/hermes-agent-*` resolve without absolute paths.
+- Keep `SOURCE-OF-TRUTH.md` and parity docs current whenever state changes.

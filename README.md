@@ -38,9 +38,9 @@ This repo is not the Hermes runtime profile, not a secret store, not a browser/s
 - User/live Brave CDP lane: `http://127.0.0.1:9222`
 - Agent-only Brave CDP lane: `http://127.0.0.1:9223`
 - Agent-only Brave profile: `/home/guidingl/.local/share/hermes/agent-brave-profile`
-- Agent-only browser helpers: `/home/guidingl/.local/bin/hermes-agent-brave*`, `/home/guidingl/.local/bin/hermes-agent-cdp`; use absolute paths unless the Hermes PATH bridge is fixed
-
-- Wardenclyffe helpers: `/home/guidingl/bin/wardenclyffe-*`; use absolute paths unless the Hermes PATH bridge is fixed
+- Hermes terminal PATH bridge: `/home/guidingl/.hermes/profiles/banebook/terminal-path-bridge.sh`
+- Agent-only browser helpers: command names resolve through the PATH bridge; absolute path fallback `/home/guidingl/.local/bin/hermes-agent-*`
+- Wardenclyffe helpers: command names resolve through the PATH bridge; absolute path fallback `/home/guidingl/bin/wardenclyffe-*`
 
 ## Publishing target
 

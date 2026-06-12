@@ -36,7 +36,7 @@ Verified on 2026-06-11T17:52:58-06:00 using `/home/guidingl/bin/wardenclyffe-sta
 
 ## Helper commands
 
-Hermes' current terminal PATH does **not** include `/home/guidingl/bin`, so use absolute paths unless the PATH bridge is fixed:
+Hermes terminal PATH bridge is now verified, so command names should resolve in new Hermes terminal calls. Absolute paths remain safe fallbacks:
 
 ```bash
 /home/guidingl/bin/wardenclyffe-status

@@ -2,6 +2,14 @@
 
 Newest entries first. AI-facing, concise, and evidence-oriented. Do not store secrets or raw session dumps here.
 
+## 2026-06-11T18:17:03-06:00 - Verify Hermes config value types after `hermes config set`
+
+Lesson: For list-valued Hermes config keys, verify the YAML type after using `hermes config set`. In this session, setting `terminal.shell_init_files` with a JSON-looking list wrote a string, and then indexed set produced a mapping because it started from that wrong type.
+
+Why it matters: A syntactically valid YAML config can still hold the wrong type and silently fail to affect terminal behavior.
+
+Verification: Repaired `terminal.shell_init_files` to a real YAML list and confirmed new terminal calls resolve helper commands through the PATH bridge.
+
 ## 2026-06-11T17:52:58-06:00 - Timestamp current-state docs together to avoid source-of-truth drift
 
 Lesson: When current state changes, update all affected AI-facing docs in one pass and timestamp them with ISO-8601 timezone values.

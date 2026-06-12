@@ -31,6 +31,7 @@
 ## Ingredients
 
 - [Hermes Profile And SOUL Map](ingredients/hermes-profile-and-soul-map.md) - verified routing between active Hermes profile, SOUL files, visible project repo, and Uma notes.
+- [Hermes Terminal PATH Bridge](ingredients/hermes-terminal-path-bridge.md) - verified profile-local shell init that exposes `/home/guidingl/.local/bin` and `/home/guidingl/bin` helpers to Hermes terminal calls.
 
 ## Meals
 

@@ -191,6 +191,33 @@
         "clean local git HEAD matches upstream when the worktree is clean and tracking exists"
       ],
       "what_it_does_not_prove": "It does not prove every fact in every doc; it is a parity guardrail."
+    },
+    {
+      "id": "hermes-terminal-path-bridge-smoke",
+      "tier": "tier_1_local_fast",
+      "graduation_stage": "verifier_backed",
+      "graduation_status": "candidate",
+      "command": "command -v hermes-agent-brave-status && command -v wardenclyffe-ssh && hermes-agent-brave-status >/tmp/hermes-agent-brave-status-smoke.txt && wardenclyffe-ssh 'hostname; uname -srm'",
+      "cwd": ".",
+      "scope": "Verifies the Banebook Hermes terminal PATH bridge exposes helper commands and that browser/Wardenclyffe helpers smoke-test successfully.",
+      "environment": "local Banebook Hermes profile",
+      "mutation": "none",
+      "approval_required": "no for read-only status/hostname checks",
+      "requires_explicit_approval": false,
+      "runs_automatically": false,
+      "evidence_artifact": "terminal output in active session or lane handoff",
+      "capability_refs": [
+        "capabilities-agent-infrastructure/ingredients/hermes-terminal-path-bridge.md"
+      ],
+      "risk_triggers": [
+        "raise tier if command starts modifying remote Wardenclyffe state or reading secrets"
+      ],
+      "proves": [
+        "helper command names resolve through PATH bridge",
+        "agent browser status helper runs",
+        "Wardenclyffe SSH read-only hostname/uname succeeds"
+      ],
+      "what_it_does_not_prove": "It does not prove all helper commands or remote operations are safe."
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Agent Lane Board
 
-Last updated: 2026-06-11T17:52:58-06:00
+Last updated: 2026-06-11T18:17:03-06:00
 
 ## Purpose
 
@@ -20,8 +20,8 @@ Give every agent a fast view of active lanes, write scopes, owners, and handoff 
 
 | Lane | Owner | Write scope | Handoff | Status | Last update |
 |---|---|---|---|---|---|
-| source-of-truth-parity | current Hermes session | `SOURCE-OF-TRUTH.md`, root docs, verifier manifest, agent-infrastructure capability, parity script | `HANDOFF.md` | In progress until commit/push completes | 2026-06-11T17:52:58-06:00 |
-| connections-control | current Hermes session | `capabilities-connections-control/`, connection/control docs, lane handoff | `agent-lanes/connections-control-HANDOFF.md` | Expanded with verified Wardenclyffe bridge | 2026-06-11T17:52:58-06:00 |
+| source-of-truth-parity | current Hermes session | `SOURCE-OF-TRUTH.md`, root docs, verifier manifest, agent-infrastructure capability, parity script | `HANDOFF.md` | Maintained; PATH bridge verified | 2026-06-11T18:17:03-06:00 |
+| connections-control | current Hermes session | `capabilities-connections-control/`, connection/control docs, lane handoff | `agent-lanes/connections-control-HANDOFF.md` | Wardenclyffe helper names now resolve through PATH bridge | 2026-06-11T18:17:03-06:00 |
 
 ## Coordination Notes
 
@@ -36,10 +36,10 @@ Give every agent a fast view of active lanes, write scopes, owners, and handoff 
 
 TS:2026-06-11T17:52:58-06:00 | Check:stale docs found and parity policy/checker written | Confidence:high
 
-- Status: In progress until commit/push completes.
-- Current focus: publish timestamp/source-of-truth parity update.
+- Status: Maintained; PATH bridge verified.
+- Current focus: publish PATH bridge update.
 - Latest changed files: `SOURCE-OF-TRUTH.md`, `tools/check_source_of_truth_parity.py`, root docs, `verifier-manifest.json`, agent-infrastructure parity principle.
-- Latest validation: parity check ok with expected dirty-worktree warning; project shape ok; relevant capability roots ok.
+- Latest validation: PATH bridge smoke passed; final validation recorded in terminal output before publish.
 - Blockers: none.
 
 ### connections-control
@@ -50,7 +50,7 @@ TS:2026-06-11T17:52:58-06:00 | Check:`/home/guidingl/bin/wardenclyffe-status` an
 - Current focus: no further connection/control changes until commit/push completes.
 - Latest changed files: `capabilities-connections-control/INDEX.md`, `capabilities-connections-control/ingredients/wardenclyffe-kubuntu-ssh-bridge.md`, `agent-lanes/connections-control-HANDOFF.md`.
 - Latest validation: Wardenclyffe Tailscale/SSH status succeeded; no messaging targets discovered.
-- Blockers: messaging needs a connected platform; Wardenclyffe helpers require absolute paths until PATH bridge is fixed.
+- Blockers: messaging needs a connected platform. PATH bridge is now fixed for helper command discovery.
 
 ## Done / Closed Lanes
 

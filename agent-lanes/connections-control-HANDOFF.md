@@ -1,6 +1,6 @@
 # Connections Control Lane
 
-TS:2026-06-11T17:52:58-06:00 | Check:browser lanes, Wardenclyffe status, messaging target discovery, capability graph | Confidence:high
+TS:2026-06-11T18:17:03-06:00 | Check:PATH bridge plus Wardenclyffe/browser helper smoke checks | Confidence:high
 
 ## Scope
 
@@ -47,7 +47,7 @@ Do not commit those runtime files into this repo. This handoff and the capabilit
 - `/home/guidingl/bin/wardenclyffe-rdp-multimon`
 - `/home/guidingl/bin/wardenclyffe-ps` - retired prior Windows workflow; exits with instruction to use SSH/Linux commands.
 
-Hermes terminal PATH currently does not include `/home/guidingl/bin` or `/home/guidingl/.local/bin`; use absolute paths unless a PATH bridge is intentionally added and verified.
+Hermes terminal PATH bridge is now active through `/home/guidingl/.hermes/profiles/banebook/terminal-path-bridge.sh`; helper command names resolve in new terminal calls. Absolute paths remain safe fallbacks.
 
 ## Validation
 
@@ -60,11 +60,11 @@ Latest known checks:
 - Agent-only browser control proof: inserted/read back `Hermes agent profile typed this via CDP` in earlier session.
 - Messaging target discovery: `send_message(action="list")` returned no connected targets.
 - Wardenclyffe status: Tailscale ping, TCP 22, and SSH inventory succeeded; current OS is Kubuntu/Linux, not retired Windows PowerShell workflow.
+- PATH bridge: `hermes-agent-brave-status` and `wardenclyffe-ssh` resolve by name and smoke checks passed on 2026-06-11T18:17:03-06:00.
 
 ## Remaining Debt
 
 - Add a real notification/messaging capability only after a platform target is connected and verified.
-- Optional: add a PATH bridge capability so Hermes can call real-user helper directories without absolute paths.
 - Decide whether to keep, ignore, or delete the old 63M test profile under Hermes internal profile-home path; do not delete without explicit approval.
 
 ## Handoff Notes
