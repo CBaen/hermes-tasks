@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "host_role": "Wardenclyffe always-on Hermes runtime",
+  "provider_actual": "Nous Portal",
+  "model_actual": "stepfun/step-3.7-flash:free",
+  "smoke_id": "wardenclyffe-nous-free-model-smoke-20260613",
+  "local_only": true,
+  "note": "the free Nous model path responded successfully on the local-only Wardenclyffe Hermes runtime"
+}

@@ -25,7 +25,8 @@
 
 ## Recipes
 
-- Add reusable workflows for parallel work, decision batching, and approval-gated execution.
+- [Wardenclyffe Uma Worker Lanes v1](recipes/wardenclyffe-uma-worker-lanes-v1.md) - local-only worker-lane rules for approved Wardenclyffe Codex/Hermes setup and smoke tests.
+- [Banebook Wardenclyffe Bidirectional Agent Coordination](recipes/banebook-wardenclyffe-bidirectional-agent-coordination.md) - safe coordination pattern for agents working across Banebook cockpit and Wardenclyffe runtime.
 
 ## Ingredients
 

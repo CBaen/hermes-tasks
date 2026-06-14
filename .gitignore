@@ -1,2 +1,5 @@
 .directory
 .~lock.*#
+
+# Private business documents retrieved for local review; keep out of Git.
+business-documents-from-wardenclyffe/

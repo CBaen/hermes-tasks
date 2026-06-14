@@ -36,6 +36,7 @@
 - [Desktop Input Control Boundary](ingredients/desktop-input-control-boundary.md) - verified desktop input tools exist, with last-resort safety boundary.
 - [Wardenclyffe Kubuntu SSH Bridge](ingredients/wardenclyffe-kubuntu-ssh-bridge.md) - verified Tailscale/SSH status bridge to Wardenclyffe; current target is Kubuntu/Linux, not the retired Windows PowerShell workflow.
 - [Wardenclyffe To Banebook SSH Access](ingredients/wardenclyffe-to-banebook-ssh-access.md) - verified reverse SSH from Wardenclyffe into Banebook after user-directed key authorization.
+- [Wardenclyffe Hermes WebUI Tunnel](ingredients/wardenclyffe-hermes-webui-tunnel.md) - verified Banebook localhost SSH tunnel to Wardenclyffe's localhost-only Hermes dashboard.
 
 ## Meals
 
@@ -44,6 +45,7 @@
 ## Kitchen
 
 - Use `kitchen/` for rough connection/control notes that are not yet trusted capabilities.
+- [Samsung S24 Tailscale Access Options](kitchen/samsung-s24-tailscale-access-options-2026-06-14.md) - current mobile peer status and safe access levels; not a verified control capability yet.
 
 ## Failures
 

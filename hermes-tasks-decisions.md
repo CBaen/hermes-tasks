@@ -1,6 +1,82 @@
+## 2026-06-13T20:04:31-06:00 - Configure Wardenclyffe WebUI as localhost service plus Banebook SSH tunnel
+
+Decision: Run Wardenclyffe Hermes dashboard persistently as a user systemd service bound to `127.0.0.1:9119`, and expose it to Banebook through an SSH localhost tunnel at `http://127.0.0.1:9129` using helper commands. Do not use `hermes dashboard --insecure` or bind the dashboard to `0.0.0.0`.
+
+Reason: Wardenclyffe should own the always-on Hermes runtime while Banebook remains the cockpit. The dashboard can expose sensitive configuration surfaces, so localhost-only binding plus SSH tunneling gives broad cockpit access without copying auth/session/browser state or exposing the dashboard on Tailscale/LAN.
+
+Evidence: Built Wardenclyffe dashboard assets, installed/enabled `~/.config/systemd/user/hermes-dashboard.service`, verified `systemctl --user is-enabled/is-active` => enabled/active, verified Wardenclyffe listener `127.0.0.1:9119`, installed Banebook helpers `wardenclyffe-hermes-webui`, `wardenclyffe-hermes-webui-status`, `wardenclyffe-hermes-webui-stop`, verified local listener `127.0.0.1:9129`, and browser navigation loaded `Hermes Agent - Dashboard`. Also changed Wardenclyffe default model to `stepfun/step-3.7-flash:free` with provider `nous` so the Free subscription's WebUI path works by default; no-override `hermes -z` smoke returned `WARDENCLYFFE_DEFAULT_MODEL_PASS`.
+
+Rollback / next: Stop Banebook tunnel with `wardenclyffe-hermes-webui-stop`; stop remote service with `wardenclyffe-hermes-webui-stop --remote` or `systemctl --user stop hermes-dashboard.service` on Wardenclyffe. Next operating-loop work can use the WebUI/tunnel directly while preserving hard stops for external sends, account/security changes, money, production/client mutation, destructive deletion, Docker pruning, and backup removal.
+
+## 2026-06-13T19:48:26-06:00 - Document named Wardenclyffe worker dispatch gates v1.1
+
+Decision: Expand the Wardenclyffe worker-lane recipe into a named dispatch matrix for `finance-clerk`, `researcher`, `builder`, `verifier`, `client-ops`, `life-admin`, and `browser-worker`, each with green/yellow/red action boundaries and minimum evidence requirements.
+
+Reason: Provider auth and a free-model smoke are now verified, but that proves execution only. Wardenclyffe still needs human-readable gates so future Kanban cards can be safely routed without confusing local preparation with external/account/client/financial execution.
+
+Evidence: Updated `capabilities-collaboration-autonomy/recipes/wardenclyffe-uma-worker-lanes-v1.md` with v1.1 named lanes, dispatch readiness checklist, model/provider free-tier rule, anti-overlap rule, evidence bars, and stop conditions. This change documents how future workers may be scoped; it does not turn on broad autonomous dispatch.
+
+Rollback / next: Revert or revise the v1.1 section if the user changes the autonomy boundary. Future worker cards should cite a lane/profile, workspace, green/yellow/red classification, allowed actions, evidence artifact, stop condition, and anti-overlap rule before leaving blocked/triage.
+
+## 2026-06-13T18:59:57-06:00 - Use free Nous model for Wardenclyffe model-backed smoke
+
+Decision: Treat the first Wardenclyffe Hermes model-backed smoke as a local-only one-shot inference using explicit Nous free model `stepfun/step-3.7-flash:free`, not the configured paid default model.
+
+Reason: Wardenclyffe is authenticated to Nous Portal on the Free subscription. The configured default model `anthropic/claude-opus-4.6` required available credits and returned a low-balance/paid-model error. Hermes' own model-selection helpers reported selectable free models `stepfun/step-3.7-flash:free` and `nvidia/nemotron-3-ultra:free`.
+
+Evidence: `wardenclyffe-ssh` ran `hermes --provider nous --model "stepfun/step-3.7-flash:free" -z <local-only prompt>`. The response was valid JSON with `result: PASS`, `provider_actual: Nous Portal`, `model_actual: stepfun/step-3.7-flash:free`, and `local_only: true`, saved at `artifacts/model-smoke/wardenclyffe-nous-free-model-smoke-20260613.json` on both Wardenclyffe and Banebook.
+
+Rollback / next: Do not enable broad model-backed dispatch based solely on this smoke. Keep default paid-model mismatch in mind; either choose a free default model or use explicit free model overrides until credits/plan are intentionally changed.
+
+## 2026-06-13T18:51:06-06:00 - Complete fresh Wardenclyffe Nous Portal provider authentication
+
+Decision: Use Nous Portal as the fresh Wardenclyffe Hermes provider login path and verify it before any model-backed worker dispatch.
+
+Reason: Wardenclyffe is the approved always-on Hermes runtime host, but auth/session/browser state must not be copied from Banebook. A fresh provider login on the runtime host satisfies the runtime requirement while preserving the machine-boundary rule.
+
+Evidence: User selected Nous Portal, approved the Free $0/mo plan path, selected email login, approved the email-login submission, and completed the Privy email confirmation. Wardenclyffe background helper reported `NOUS_BROWSER_APPROVAL_RECEIVED` and `NOUS_CREDENTIALS_SAVED label=Wardenclyffe Nous Portal`. Verification with `wardenclyffe-ssh 'hermes status'` showed `Nous Portal ✓ logged in`, Provider `Nous Portal`, model `anthropic/claude-opus-4.6`, managed tools available, gateway active/enabled, and no scheduled cron jobs.
+
+Rollback / next: Remove/revoke Wardenclyffe Nous credentials only if the user asks or account security requires it. Do not copy these auth files to Banebook. Next model-backed work should be a narrow smoke/worker task with explicit approval-boundary review before broad dispatch.
+
 # Hermes Tasks Decisions
 
 Newest entries first.
+
+## 2026-06-14T13:09:00-06:00 - Treat Banebook and Wardenclyffe as lane-gated bidirectional agent hosts
+
+Decision: Support automated agents on both Banebook and Wardenclyffe through Tailscale/SSH, but route work through explicit worker lanes, route records, and approval boundaries instead of broad unsupervised cross-machine control.
+
+Reason: The user wants both computers to connect and work with each other. Bidirectional SSH is verified, Wardenclyffe is the always-on runtime, and Banebook remains the cockpit/live-desktop station. Lane gates prevent file overlap, secret copying, and accidental account/security/external actions.
+
+Evidence: `wardenclyffe-ssh 'hostname; whoami'` returned `WARDENCLYFFE guidingl`; `wardenclyffe-ssh 'ssh -o BatchMode=yes banebook "hostname; whoami"'` returned `BANEBOOK guidingl`.
+
+## 2026-06-14T13:09:00-06:00 - Treat Samsung S24 Tailscale presence as inventory, not control
+
+Decision: Document the Samsung S24 as a visible Tailscale Android peer and require an explicit phone-side service choice before agents can access or work on it.
+
+Reason: Tailscale gives reachability, not Android control. File access, shell access, notifications/SMS, screen control, and app automation each require different phone permissions and risk gates.
+
+Evidence: `tailscale status --json` from Banebook and Wardenclyffe showed `Bane  24Ultra` at `100.75.32.46`, OS `android`, offline during the check.
+
+## 2026-06-13T13:20:40-06:00 - Use documented local-only Wardenclyffe worker lanes before dispatching Codex/Hermes workers
+
+Decision: Create Wardenclyffe Uma worker-lane rules v1 from Codex AGENTS, agent-coordination, Hermes Tasks docs, and capability roots, and use those rules before further worker dispatch. Treat Codex CLI and Hermes provider auth as separate runtime credentials.
+
+Reason: Wardenclyffe is now the always-on runtime host, but autonomous work needs clear lanes, anti-overlap rules, evidence requirements, and explicit stop conditions. Codex can support approved local-only worker lanes now, while Hermes LLM worker execution still requires fresh provider authentication.
+
+Evidence: User approved local-only worker-lane rule creation and one Codex smoke test with boundaries forbidding external sends, account changes, production deploys, money movement, secrets, and destructive cleanup. Added `capabilities-collaboration-autonomy/recipes/wardenclyffe-uma-worker-lanes-v1.md` and `capabilities-agent-infrastructure/ingredients/wardenclyffe-codex-hermes-auth-boundary.md`. Wardenclyffe Codex CLI smoke ran in `/home/guidingl/projects/hermes-tasks`, wrote only `artifacts/worker-smoke/wardenclyffe-codex-worker-smoke.md`, and recorded `Result: PASS`.
+
+Rollback / next: Remove or revise the v1 rule files if the user changes the autonomy boundary. Provider login was later completed fresh via Nous Portal on Wardenclyffe; do not copy auth between machines, and require a scoped smoke/dispatch decision before broad model-backed worker use.
+
+## 2026-06-13T13:01:08-06:00 - Make Wardenclyffe the primary always-on Uma/Hermes runtime host
+
+Decision: Use Wardenclyffe as the primary always-on Uma/Hermes home base for gateway, scheduled jobs, Kanban dispatch/workers, and future uninterrupted background work, while Banebook remains the daily cockpit/review/live-browser station.
+
+Reason: Wardenclyffe runs continuously and is reachable over Tailscale/OpenSSH, while Banebook does not stay on reliably enough for scheduled tasks or uninterrupted workers. Splitting runtime ownership this way avoids missed jobs and avoids unsafe bidirectional syncing of mutable Hermes runtime state.
+
+Evidence: User explicitly approved this setup. Wardenclyffe fresh Hermes install succeeded at `/home/guidingl/.hermes/hermes-agent` without copying Banebook auth/session/browser state. `hermes-gateway.service` is enabled/running as a user service with linger enabled; script-only one-shot cron job fired automatically at `2026-06-13T13:00:19-06:00`; `hermes cron list` showed no remaining smoke jobs afterward. WebUI Scheduled Kanban patch on Wardenclyffe branch `scheduled-kanban-webui` passed syntax checks, `git diff --check`, targeted Kanban tests (`90 passed`), and isolated real-Hermes scheduled-card smoke.
+
+Rollback / next: Stop/disable Wardenclyffe gateway with `hermes gateway stop` and `systemctl --user disable hermes-gateway.service` if Wardenclyffe should no longer own always-on work. Do not sync `~/.hermes`, auth, sessions, browser state, logs, caches, or Kanban SQLite across machines. Fresh Wardenclyffe Nous Portal provider authentication was completed later on 2026-06-13T18:51:06-06:00; next requirement is a scoped model-backed worker smoke before broad dispatch.
 
 ## 2026-06-12T16:26:51-06:00 - Disable Bluehost auto-renew while preserving Locally Twisted registrar safety
 

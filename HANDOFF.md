@@ -1,6 +1,51 @@
 # Hermes Tasks Handoff
 
-TS:2026-06-12T16:26:51-06:00 | Check:Locally Twisted vendor cleanup inheritance and capability update | Confidence:high
+## 2026-06-14T13:09:00-06:00 continuation - bidirectional agent and mobile access inventory
+
+- Verified Banebook -> Wardenclyffe SSH and Wardenclyffe -> Banebook SSH live.
+- Added `capabilities-collaboration-autonomy/recipes/banebook-wardenclyffe-bidirectional-agent-coordination.md` for lane-gated cross-machine agent work.
+- Samsung S24 appears on Tailscale as `Bane  24Ultra` / `100.75.32.46` / Android, but was offline during inventory.
+- Added `capabilities-connections-control/kitchen/samsung-s24-tailscale-access-options-2026-06-14.md` explaining safe access levels: presence, file sync, Termux SSH, KDE Connect, and attended ADB/scrcpy.
+- No additional SSH/security settings were changed in this continuation; future key hardening or phone pairing still needs explicit approval.
+
+## 2026-06-13T20:04:31-06:00 continuation - Wardenclyffe WebUI access configured from Banebook
+
+- Built Wardenclyffe Hermes dashboard assets and installed enabled user service `~/.config/systemd/user/hermes-dashboard.service`.
+- Service command: `hermes dashboard --host 127.0.0.1 --port 9119 --no-open --skip-build`.
+- Banebook access is through SSH tunnel helper `wardenclyffe-hermes-webui`; local URL is `http://127.0.0.1:9129`.
+- Helpers installed on Banebook: `wardenclyffe-hermes-webui`, `wardenclyffe-hermes-webui-status`, `wardenclyffe-hermes-webui-stop`; desktop launcher installed at `~/.local/share/applications/wardenclyffe-hermes-webui.desktop`.
+- Browser verification loaded `Hermes Agent - Dashboard`; gateway displayed running.
+- Wardenclyffe default Hermes config changed from credit-gated `anthropic/claude-opus-4.6` to provider `nous`, model `stepfun/step-3.7-flash:free`; default no-override one-shot smoke returned `WARDENCLYFFE_DEFAULT_MODEL_PASS`.
+- Kanban card `t_30f3972d` marked done; board stats are now done=3, blocked=3.
+- Still do not use `--insecure` dashboard binding or copy auth/session/browser state between machines.
+
+
+## 2026-06-13T19:48:26-06:00 continuation - Wardenclyffe worker dispatch gates v1.1 documented
+
+- Expanded `capabilities-collaboration-autonomy/recipes/wardenclyffe-uma-worker-lanes-v1.md` with a v1.1 named dispatch matrix for `finance-clerk`, `researcher`, `builder`, `verifier`, `client-ops`, `life-admin`, and `browser-worker`.
+- Each lane now has green/yellow/red action boundaries and minimum evidence requirements. The recipe also includes a dispatch readiness checklist, anti-overlap rule, stop/escalation requirements, and the Nous Free model rule (`stepfun/step-3.7-flash:free` unless credits/default model are intentionally changed).
+- This documents future worker routing; it does **not** enable broad autonomous dispatch. Future cards still need lane/profile, workspace, allowed actions, evidence path, stop condition, and task-specific approval boundaries.
+- Next safe step is likely Wardenclyffe WebUI access from Banebook (`t_30f3972d`) or a specific scoped worker card that cites the v1.1 gates.
+
+
+## 2026-06-13T18:59:57-06:00 continuation - Wardenclyffe free-model Hermes smoke passed
+
+- Ran one small local-only Wardenclyffe Hermes one-shot using verified Nous Portal auth and explicit free model `stepfun/step-3.7-flash:free`.
+- The configured default `anthropic/claude-opus-4.6` is a paid model and returned a low-credits error on the Free subscription, so free-model discovery was performed through Hermes' own model-selection helpers. Selectable free models observed: `stepfun/step-3.7-flash:free` and `nvidia/nemotron-3-ultra:free`.
+- Smoke artifact is `artifacts/model-smoke/wardenclyffe-nous-free-model-smoke-20260613.json` and validates as JSON with `result: PASS`, `provider_actual: Nous Portal`, `model_actual: stepfun/step-3.7-flash:free`, and `local_only: true`.
+- Wardenclyffe Kanban card `t_89e4c633` received a non-secret comment with this evidence but remains blocked for broader dispatch/approval-rule design.
+- Do not treat this as broad autonomous-worker approval; it proves model execution only.
+
+
+## 2026-06-13T18:51:06-06:00 continuation - Wardenclyffe Nous Portal provider auth verified
+
+- Wardenclyffe Hermes Nous Portal login completed through user-approved Free-plan/email device-code flow; no Banebook auth/session/browser state was copied.
+- Verification from Wardenclyffe: `hermes status` shows `Nous Portal ✓ logged in`, Provider `Nous Portal`, model `anthropic/claude-opus-4.6`, inference URL `https://inference-api.nousresearch.com/v1`, managed tools available, gateway active/enabled, and `hermes cron list` shows no scheduled jobs.
+- Wardenclyffe Kanban card `t_626918f9` (`Fresh provider auth for Wardenclyffe Hermes workers`) was marked done and commented with the verification. The remaining five `uma-operating-loop` cards stay blocked until their separate access/dispatch/approval decisions are made.
+- Next safe step is not broad autonomous dispatch; run a scoped model-backed Hermes worker smoke only after explicit approval for that smoke and its boundaries.
+
+
+TS:2026-06-13T13:20:40-06:00 | Check:Wardenclyffe worker-lane rules and Codex local-only smoke | Confidence:high
 
 ## Current state
 
@@ -9,6 +54,31 @@ TS:2026-06-12T16:26:51-06:00 | Check:Locally Twisted vendor cleanup inheritance 
 - Remote: `https://github.com/CBaen/hermes-tasks`
 - Source-of-truth entrypoint: `SOURCE-OF-TRUTH.md`
 - Runtime/profile state remains outside this repo.
+
+
+## 2026-06-13T13:20:40-06:00 continuation - Wardenclyffe worker-lane rules and Codex smoke
+
+- User approved creating Wardenclyffe Uma worker-lane rules from Codex AGENTS, agent-coordination, Hermes Tasks docs, and capability roots. Boundary: local-only Codex smoke; no external sends, no account changes, no production deploys, no money movement, no secrets, and no destructive cleanup.
+- Added `capabilities-collaboration-autonomy/recipes/wardenclyffe-uma-worker-lanes-v1.md` with v1 lane rules for Researcher, Builder, Reviewer, Ops, and Finance/Admin lanes. The existing global standing-permission tiers remain candidate/proposed; this v1 approval is narrower and local-only.
+- Added `capabilities-agent-infrastructure/ingredients/wardenclyffe-codex-hermes-auth-boundary.md` recording the verified split: Wardenclyffe Codex CLI is logged in via ChatGPT, Wardenclyffe Hermes gateway/scheduler works, and Wardenclyffe Hermes provider auth was later completed via Nous Portal.
+- Ran Wardenclyffe Codex CLI as a bounded local-only worker with workspace-write sandbox and ephemeral session. It inspected only the approved local docs, wrote only `artifacts/worker-smoke/wardenclyffe-codex-worker-smoke.md`, and recorded `Result: PASS`.
+- Synced the new non-secret lane docs/index links to Wardenclyffe's `~/projects/hermes-tasks` clone and copied the smoke artifact back to Banebook.
+- Provider-login blocker resolved later at 2026-06-13T18:51:06-06:00: user selected Nous Portal Free-plan/email flow, completed Privy email confirmation, and Wardenclyffe `hermes status` verified Nous Portal login.
+
+## 2026-06-13T13:01:08-06:00 continuation - Wardenclyffe primary Uma/Hermes home base
+
+- User explicitly approved Wardenclyffe as the primary always-on Uma/Hermes home base and approved fresh install/config there without copying Banebook secrets/auth/session/browser state.
+- Verified target: Banebook controls `WARDENCLYFFE` over Tailscale/OpenSSH. Wardenclyffe user is `guidingl`; OS reported Linux `7.0.0-22-generic`.
+- Fresh Hermes installed on Wardenclyffe at `/home/guidingl/.hermes/hermes-agent`; `~/.hermes` was absent before install. Installer used official `https://hermes-agent.nousresearch.com/install.sh` with setup skipped.
+- No Banebook `auth.json`, sessions, browser profile, caches, logs, or `.env` secrets were copied. Wardenclyffe provider auth was later completed fresh via Nous Portal; broad autonomous model-backed work still needs scoped smoke/dispatch approval.
+- Gateway installed as enabled user systemd service `hermes-gateway.service`; `loginctl` linger is enabled; status verified active/running. `/usr/local/bin/hermes` points to `/home/guidingl/.local/bin/hermes` so non-interactive SSH commands resolve `hermes`.
+- Script-only cron scheduling verified without model credentials: one-shot job `5ef2a9f71a02` ran via gateway and wrote `Wardenclyffe Hermes gateway smoke fired at 2026-06-13T13:00:19-06:00`; after repeat `1`, `hermes cron list` showed no scheduled jobs.
+- Cloned repos on Wardenclyffe:
+  - `/home/guidingl/projects/hermes-tasks` on `main` tracking `origin/main`.
+  - `/home/guidingl/projects/hermes-webui` on branch `scheduled-kanban-webui` with only the seven intended Scheduled Kanban files dirty.
+- Applied Scheduled Kanban WebUI patch cleanly on Wardenclyffe. Validation passed: `python3 -m py_compile api/kanban_bridge.py`, `node --check static/panels.js`, `node --check static/i18n.js`, `git diff --check`, `python3 -m pytest tests/test_kanban_bridge.py tests/test_kanban_ui_static.py -q` -> `90 passed`, and isolated real-Hermes scheduled-card smoke returned scheduled column + `after_unblock_status= ready`.
+- Playwright bundled Chromium install failed during Hermes install because Playwright does not support `ubuntu26.04-x64`; browser automation on Wardenclyffe should use the installed Brave/CDP path or a later supported Playwright/browser workaround.
+- Wardenclyffe Kanban board `uma-operating-loop` created with six blocked backlog cards: provider auth, Wardenclyffe WebUI access, worker lanes/approval gates, daily review job, decision cockpit, and finance pipeline spec. All are blocked to avoid premature dispatch before provider auth and approval rules are configured.
 
 ## What changed this continuation
 
@@ -66,6 +136,7 @@ TS:2026-06-12T16:26:51-06:00 | Check:Locally Twisted vendor cleanup inheritance 
 - Use `9223` for independent public browsing and control tests.
 - Prefer CDP/DOM/API/CLI/file artifacts over `xdotool` or `ydotool`.
 - Wardenclyffe is currently verified as Kubuntu/Linux over SSH; do not rely on stale Windows/PowerShell assumptions.
+- Wardenclyffe now owns always-on Hermes gateway/scheduler runtime. Banebook remains the cockpit/review/live-browser station. Do not blindly sync `~/.hermes`, auth, sessions, browser state, logs, or Kanban SQLite between machines.
 - Wardenclyffe reverse SSH into Banebook is now authorized for the exact handoff key; do not add more keys or weaken SSH settings without explicit approval.
 - Still stop before final external actions: submissions, messages, uploads, account/security changes, payments, signatures, loan acceptance, production deployments, destructive deletes, Docker pruning, backup removal, reboots, or service stops.
 - For logged-in account pages, keep private details out of repo docs: no raw emails, account IDs, payment details, personal contact fields, screenshots containing sensitive account data, cookies, tokens, or raw browser/session dumps.
@@ -88,6 +159,8 @@ python /home/guidingl/projects/capabilities-framework/tools/validate_capability_
 
 ## Remaining work
 
+- Choose the Wardenclyffe Hermes provider, then authenticate/configure Hermes fresh for LLM workers; no Banebook auth was copied.
+- Decide whether to run Wardenclyffe WebUI as a persistent service and how Banebook should reach it over Tailscale.
 - Add messaging/notification capability only after a real platform is connected and verified. Prepared path is Slack manifest + user-provided Slack tokens/app install.
 - Decide whether to delete the old 63M test profile at `/home/guidingl/.hermes/profiles/banebook/home/.local/share/hermes/agent-brave-profile`; do not delete without explicit approval.
 - Keep `SOURCE-OF-TRUTH.md` and parity docs current whenever state changes.

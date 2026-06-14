@@ -65,6 +65,9 @@ Pointers:
 
 - Active Hermes profile: `/home/guidingl/.hermes/profiles/banebook/`
 - Active Hermes SOUL: `/home/guidingl/.hermes/profiles/banebook/SOUL.md`
+- Wardenclyffe always-on Hermes runtime: `/home/guidingl/.hermes/hermes-agent` on `wardenclyffe`; gateway enabled/running as the `guidingl` user service.
+- Wardenclyffe worker-lane rules: `capabilities-collaboration-autonomy/recipes/wardenclyffe-uma-worker-lanes-v1.md`
+- Wardenclyffe Codex/Hermes auth boundary: `capabilities-agent-infrastructure/ingredients/wardenclyffe-codex-hermes-auth-boundary.md`
 - User/live Brave CDP: `http://127.0.0.1:9222`
 - Agent-only Brave CDP: `http://127.0.0.1:9223`
 - Agent-only profile: `/home/guidingl/.local/share/hermes/agent-brave-profile`
@@ -85,6 +88,7 @@ Pointers:
 
 - `artifacts/libreoffice/cheese-poem.odt` - harmless LibreOffice Writer/ODT verification artifact.
 - `artifacts/libreoffice/README.md` - artifact purpose and boundaries.
+- `artifacts/worker-smoke/wardenclyffe-codex-worker-smoke.md` - Wardenclyffe Codex local-only worker smoke proof, result PASS.
 
 ## External Links
 
@@ -95,3 +99,9 @@ Pointers:
 
 - `artifacts/messaging/hermes-slack-manifest.json` - generated Slack app manifest, no tokens.
 - `artifacts/messaging/messaging-options-2026-06-11.md` - current WhatsApp/Signal/Slack setup assessment.
+
+- Wardenclyffe Hermes WebUI tunnel: remote service `hermes-dashboard.service` on `127.0.0.1:9119`, Banebook helper `wardenclyffe-hermes-webui`, local URL `http://127.0.0.1:9129`, capability `capabilities-connections-control/ingredients/wardenclyffe-hermes-webui-tunnel.md` (verified 2026-06-13T20:04:31-06:00).
+## Bidirectional / Mobile Coordination
+
+- `capabilities-collaboration-autonomy/recipes/banebook-wardenclyffe-bidirectional-agent-coordination.md` - cross-machine worker route pattern.
+- `capabilities-connections-control/kitchen/samsung-s24-tailscale-access-options-2026-06-14.md` - mobile peer inventory and access options.

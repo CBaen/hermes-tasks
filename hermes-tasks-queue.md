@@ -7,9 +7,16 @@
 | P0 | source-of-truth-parity | Timestamp contract, authority order, parity checker, and updated docs/capabilities | Done; maintain on every docs/capability change | current/future Hermes sessions | Parity checker passes |
 | P1 | messaging-notification | Connect one notification platform; Slack is prepared, WhatsApp/Signal are assessed | Blocked on user account/platform linking | future Hermes session | Slack manifest validated; no Hermes targets discovered on 2026-06-11T22:37:43-06:00 |
 | P1 | wardenclyffe-bridge | Use verified Wardenclyffe Kubuntu SSH bridge through resolved helper commands | Implemented as bidirectional SSH capability cards | future Hermes session | Wardenclyffe -> Banebook SSH verification succeeded on 2026-06-11T22:37:43-06:00 |
+| P0 | wardenclyffe-hermes-always-on | Wardenclyffe owns always-on Hermes gateway/dashboard/scheduled runtime; Banebook remains cockpit | Implemented for fresh install/gateway/dashboard/script-only scheduler, Nous Portal provider auth, free-model default/smokes, and worker dispatch gates; operating backlog remains partially blocked pending separate decisions | current/future Hermes sessions | Gateway active/enabled; dashboard active/enabled behind SSH tunnel; no-agent cron smoke fired; Nous Portal auth verified; default/free-model smoke PASS; `uma-operating-loop` board has three done cards and three blocked cards |
+| P0 | wardenclyffe-worker-lanes | Local-only Wardenclyffe worker-lane rules, named dispatch gates, and smoke proofs | Implemented for v1.1; use gates before further worker dispatch | current/future Hermes sessions | Codex smoke PASS; Nous free-model smoke PASS; lane card done |
+| P0 | wardenclyffe-webui-access | Banebook cockpit access to Wardenclyffe Hermes WebUI | Implemented with localhost-only remote dashboard plus Banebook SSH tunnel/helper/launcher | current/future Hermes sessions | `hermes-dashboard.service` active/enabled; `http://127.0.0.1:9129` loads dashboard from Banebook; card done |
+| P1 | mobile-s24-access | Explore Samsung S24 as Tailscale-accessible mobile edge device | Inventory done; setup blocked on phone being online and user choosing service level | future Hermes session | `Bane  24Ultra` / Android / `100.75.32.46` seen offline on Tailscale at 2026-06-14T13:09:00-06:00 |
 
 ## Next
 
+- Use the v1.1 Wardenclyffe dispatch gates plus bidirectional Banebook/Wardenclyffe coordination recipe for future scoped worker cards; do not enable external/account/security/money/production/destructive actions without exact approval.
+- Pick a Samsung S24 access level when the phone is online: presence-only, file sync, KDE Connect, Termux SSH, or attended ADB/scrcpy.
+- Use `wardenclyffe-hermes-webui` from Banebook to open the persistent Wardenclyffe dashboard via SSH tunnel.
 - Complete Slack app install/token setup when user is present; do not store tokens in repo.
 - Add notification/messaging capability only after an actual target/platform is connected and verified.
 - Keep parity checker passing before/after docs/capability publish.
@@ -23,6 +30,10 @@
 
 ## Done
 
+- 2026-06-13T13:20:40-06:00: Added Wardenclyffe Uma worker-lane rules v1, documented Codex/Hermes auth boundaries, synced the non-secret lane docs to Wardenclyffe, and ran a bounded Wardenclyffe Codex CLI local-only smoke test. Result: PASS artifact at `artifacts/worker-smoke/wardenclyffe-codex-worker-smoke.md`.
+- 2026-06-13T13:01:08-06:00: Approved and configured Wardenclyffe as the primary always-on Uma/Hermes runtime host. Fresh Hermes installed without copying Banebook secrets/auth/sessions/browser state; gateway user service is enabled/running with linger; `/usr/local/bin/hermes` resolves the launcher for non-interactive SSH; script-only cron smoke fired automatically and removed its one-shot job.
+- 2026-06-13T13:01:08-06:00: Cloned Hermes Tasks and Hermes WebUI on Wardenclyffe, applied the Scheduled Kanban WebUI patch on branch `scheduled-kanban-webui`, and verified syntax, whitespace, targeted Kanban tests (`90 passed`), and isolated real-Hermes scheduled-card smoke.
+- 2026-06-13T13:01:08-06:00: Created Wardenclyffe Kanban board `uma-operating-loop` and seeded six blocked backlog cards for the remaining always-on Uma buildout so they are preserved but cannot dispatch prematurely.
 - 2026-06-12T16:26:51-06:00: Completed Bluehost auto-renew cleanup for `locallytwisted.com` after explicit user approval. Turned off auto-renew through Bluehost confirmation flows for SiteLock Essentials and WordPress Basic Hosting tied to the domain. Bluehost showed processing notices; Renewal Center/API verification showed `AutoRenewOn=0`, `AutoRenewOff=1`, and WordPress Basic Hosting `autoRenew=false`. Visible Bluehost Angular table/cache remained stale after reload, so future agents should verify backend/API state before retrying account actions.
 - 2026-06-11T22:37:43-06:00: Followed Wardenclyffe reverse SSH handoff, authorized exact verified key on Banebook, confirmed Wardenclyffe can SSH back into Banebook, regenerated/validated Slack manifest, and documented messaging options.
 - 2026-06-11T18:17:03-06:00: Added and verified profile-local Hermes terminal PATH bridge; helper commands now resolve by name and smoke checks passed for `hermes-agent-brave-status` and `wardenclyffe-ssh`.
