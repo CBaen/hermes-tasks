@@ -1,6 +1,6 @@
 # Hermes Tasks Source Of Truth
 
-Last updated: 2026-06-14T13:29:12-06:00
+Last updated: 2026-06-14T13:57:08-06:00
 
 ## Purpose
 
@@ -83,3 +83,4 @@ If the check fails because the worktree is intentionally dirty before commit, fi
 - Messaging/notification: no connected targets yet; Slack manifest prepared at `artifacts/messaging/hermes-slack-manifest.json`; account/platform linking still required before delivery works.
 - Banebook<->Wardenclyffe bidirectional SSH is verified as of 2026-06-14T13:09:00-06:00; agents may coordinate through lane-gated SSH/Tailscale workflows, but security/account changes still require explicit approval.
 - Samsung S24 is online on Tailscale as `Bane  24Ultra` / `100.75.32.46` / Android as of 2026-06-14T13:29:12-06:00; `tailscale ping` succeeded via DERP and direct LAN. Tailscale reachability is not phone control; choose a phone-side service before agents can work with it.
+- Samsung S24 ADB/scrcpy app-testing lane: host tools installed on Banebook and Wardenclyffe as of 2026-06-14T13:57:08-06:00 (`adb`/`fastboot` 34.0.5-debian, `scrcpy` 3.3.4). Phone is reachable on Tailscale but not yet paired; pairing requires user-present Wireless Debugging code/ports and remains attended/task-scoped.

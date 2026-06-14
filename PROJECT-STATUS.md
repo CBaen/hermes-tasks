@@ -1,6 +1,6 @@
 # Hermes Tasks Status
 
-Last updated: 2026-06-14T13:29:12-06:00
+Last updated: 2026-06-14T13:57:08-06:00
 
 ## What this is
 
@@ -107,3 +107,8 @@ Next non-blocked work is to decide how Banebook should open/control the Wardencl
 
 - Wardenclyffe -> Banebook reverse SSH key was hardened after explicit approval: restricted to Wardenclyffe Tailscale IPs and no SSH agent/X11/port forwarding; normal command execution still verified.
 - Samsung S24 `Bane  24Ultra` / `100.75.32.46` is online in Tailscale and pingable. Phone access remains discussion-gated until a phone-side service is chosen.
+## 2026-06-14T13:57:08-06:00 - ADB/scrcpy app-testing prerequisites installed
+
+- Installed `adb`, `fastboot`, `scrcpy`, and `android-udev-rules` on Banebook and Wardenclyffe from Ubuntu repos.
+- Verified `adb` 34.0.5-debian, `fastboot` 34.0.5-debian, and `scrcpy` 3.3.4 on both machines.
+- S24 remains reachable on Tailscale at `100.75.32.46`; no ADB devices are paired yet. Pairing is user-present and app-test scoped.

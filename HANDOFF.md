@@ -1,5 +1,13 @@
 # Hermes Tasks Handoff
 
+## 2026-06-14T13:57:08-06:00 continuation - ADB/scrcpy app-testing lane prepared
+
+- User clarified Level 4 ADB/scrcpy is needed for app testing. Treat this as attended app-testing, not standing unattended phone control.
+- Installed `adb`, `fastboot`, `scrcpy`, and `android-udev-rules` on Banebook and Wardenclyffe.
+- Verified versions on both: ADB/Fastboot `34.0.5-debian`, scrcpy `3.3.4`.
+- `adb devices -l` shows no paired devices yet on either machine; pairing requires user-present S24 Wireless Debugging code/ports.
+- Added `capabilities-connections-control/ingredients/samsung-s24-adb-scrcpy-app-testing.md`.
+
 ## 2026-06-14T13:29:12-06:00 continuation - reverse SSH hardened and S24 online explained
 
 - User confirmed the Samsung S24 is online in Tailscale and asked for an Uma explanation before choosing phone access level.

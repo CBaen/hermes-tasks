@@ -42,6 +42,14 @@ Rollback / next: Remove/revoke Wardenclyffe Nous credentials only if the user as
 
 Newest entries first.
 
+## 2026-06-14T13:57:08-06:00 - Use ADB/scrcpy for attended Samsung S24 app testing
+
+Decision: Prepare Level 4 ADB/scrcpy for Samsung S24 app testing, but keep it attended, task-scoped, and not a standing autonomous phone-control permission.
+
+Reason: The user clarified that ADB/scrcpy is needed for app testing. It is the right tool for real-device Android testing, but it can expose/control private phone surfaces if used broadly.
+
+Evidence: Installed `adb`, `fastboot`, `scrcpy`, and `android-udev-rules` on Banebook and Wardenclyffe. Verified ADB/Fastboot `34.0.5-debian`, scrcpy `3.3.4`, S24 Tailscale reachability, and no paired ADB devices before user-present pairing.
+
 ## 2026-06-14T13:29:12-06:00 - Harden Wardenclyffe reverse SSH while keeping command coordination
 
 Decision: After user approval, restrict the existing Wardenclyffe -> Banebook public key to Wardenclyffe's Tailscale IPv4/IPv6 addresses and disable SSH agent forwarding, X11 forwarding, and port forwarding. Keep normal command execution available.

@@ -101,3 +101,6 @@ Guardrail: Generated proof documents should live under `artifacts/` and transien
 Lesson: This repo is a shared operating scaffold and can contain unrelated local artifacts. Before publishing, inspect `git status --porcelain=v1 -uall`, stage exact files, and inspect the cached diff before commit.
 
 Why it matters: Avoid accidentally committing runtime caches, browser/session state, lock files, or unrelated agent work.
+## 2026-06-14T13:57:08-06:00 - ADB package names on current Kubuntu
+
+On this Kubuntu release, use `adb` and `fastboot` package names, not the older `android-tools-adb` / `android-tools-fastboot` names. `scrcpy` recommends `adb` and downloads/verifies its matching upstream server during package setup.

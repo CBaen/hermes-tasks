@@ -127,7 +127,7 @@ Why this is high-risk:
 - a mistake can tap real buttons in real apps;
 - it is closer to "Uma can use my phone" than "Uma can exchange files with my phone."
 
-Recommendation: use ADB/scrcpy only while you are present and only for a specific task, then disconnect/disable it. Do **not** make it standing autonomous access.
+Recommendation: because the user identified app testing as the real need, ADB/scrcpy is approved as an attended app-testing lane. It remains unsuitable as standing unattended phone-control access.
 
 ## Recommendation ladder
 
@@ -137,11 +137,11 @@ For your goal — agents working across devices without making privacy/security 
 2. Choose **Level 1 file sync** for safe artifact movement.
 3. Add **Level 2 KDE Connect** only with narrow plugins.
 4. Add **Level 3 Termux SSH** if we want phone-side scripts/automation.
-5. Reserve **Level 4 ADB/scrcpy** for attended, task-specific phone control.
+5. Use **Level 4 ADB/scrcpy** for attended, task-specific app testing only.
 
 ## Suggested default for now
 
-Do not choose ADB/scrcpy as the first standing access method. Start with one of:
+ADB/scrcpy is the chosen path for app testing, but not for standing unattended phone access. For non-app-testing convenience, still consider:
 
 - **Syncthing narrow folder** if the goal is moving files/photos/docs.
 - **KDE Connect narrow plugins** if the goal is convenience/status/file transfer.
@@ -156,3 +156,17 @@ Before setup, answer in plain terms:
 3. Do we want Uma to run scripts on the phone?
 4. Do we want Uma to see/control the phone screen while you are present?
 5. Are there apps/data that should be completely off-limits?
+## 2026-06-14T13:57:08-06:00 update — ADB/scrcpy chosen for app testing
+
+The user clarified that Level 4 is needed for app testing. Banebook and Wardenclyffe now have the host toolchain installed:
+
+```text
+adb 34.0.5-debian
+fastboot 34.0.5-debian
+scrcpy 3.3.4
+android-udev-rules installed
+```
+
+The phone is still not paired. Pairing requires the S24 to show a Wireless Debugging pairing code and port, which must be user-provided live.
+
+See `../ingredients/samsung-s24-adb-scrcpy-app-testing.md` for the attended app-testing workflow.

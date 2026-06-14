@@ -109,3 +109,6 @@ Pointers:
 
 - `capabilities-connections-control/ingredients/wardenclyffe-to-banebook-ssh-access.md` - hardened reverse SSH key state.
 - `capabilities-connections-control/kitchen/samsung-s24-tailscale-access-options-2026-06-14.md` - expanded explanation of Android access options and ADB/scrcpy.
+## 2026-06-14T13:57:08-06:00 Android app testing
+
+- `capabilities-connections-control/ingredients/samsung-s24-adb-scrcpy-app-testing.md` - attended ADB/scrcpy workflow for Samsung S24 app testing.

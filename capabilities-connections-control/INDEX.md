@@ -37,6 +37,7 @@
 - [Wardenclyffe Kubuntu SSH Bridge](ingredients/wardenclyffe-kubuntu-ssh-bridge.md) - verified Tailscale/SSH status bridge to Wardenclyffe; current target is Kubuntu/Linux, not the retired Windows PowerShell workflow.
 - [Wardenclyffe To Banebook SSH Access](ingredients/wardenclyffe-to-banebook-ssh-access.md) - verified reverse SSH from Wardenclyffe into Banebook after user-directed key authorization.
 - [Wardenclyffe Hermes WebUI Tunnel](ingredients/wardenclyffe-hermes-webui-tunnel.md) - verified Banebook localhost SSH tunnel to Wardenclyffe's localhost-only Hermes dashboard.
+- [Samsung S24 ADB Scrcpy App Testing](ingredients/samsung-s24-adb-scrcpy-app-testing.md) - host toolchain ready on Banebook and Wardenclyffe for attended Android app testing; phone pairing remains user-present.
 
 ## Meals
 
