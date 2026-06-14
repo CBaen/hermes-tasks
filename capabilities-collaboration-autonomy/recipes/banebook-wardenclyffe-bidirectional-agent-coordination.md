@@ -23,7 +23,7 @@ tags:
 
 Banebook and Wardenclyffe can now talk to each other over Tailscale/OpenSSH, so agents can coordinate work across both computers without copying runtime secrets or taking over the user's physical keyboard/mouse.
 
-Verified on 2026-06-14T13:09:00-06:00:
+Verified again on 2026-06-14T13:29:12-06:00:
 
 ```text
 Banebook -> Wardenclyffe: WARDENCLYFFE guidingl
@@ -99,6 +99,14 @@ wardenclyffe-ssh 'ssh -o BatchMode=yes banebook "hostname; whoami"'
 python tools/check_source_of_truth_parity.py
 ```
 
-## Recommended improvement
+## 2026-06-14 security hardening applied
 
-Now that bidirectional SSH works, the next security improvement should be a narrow key restriction on Banebook's Wardenclyffe authorized key, such as limiting by Wardenclyffe's Tailscale IP and disabling forwarding while keeping normal command execution available. This is an account/security change, so it needs explicit approval before applying.
+Guiding Light approved hardening the Wardenclyffe -> Banebook key on 2026-06-14T13:29:12-06:00. The key is now restricted to Wardenclyffe's Tailscale IPv4/IPv6 addresses and has SSH agent forwarding, X11 forwarding, and port forwarding disabled. Normal SSH command execution still works.
+
+Verification returned:
+
+```text
+BANEBOOK
+guidingl
+REVERSE_SSH_HARDENED_PASS
+```

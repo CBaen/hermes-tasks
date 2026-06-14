@@ -105,3 +105,7 @@ Pointers:
 
 - `capabilities-collaboration-autonomy/recipes/banebook-wardenclyffe-bidirectional-agent-coordination.md` - cross-machine worker route pattern.
 - `capabilities-connections-control/kitchen/samsung-s24-tailscale-access-options-2026-06-14.md` - mobile peer inventory and access options.
+## 2026-06-14T13:29:12-06:00 Reverse SSH hardening / S24 online
+
+- `capabilities-connections-control/ingredients/wardenclyffe-to-banebook-ssh-access.md` - hardened reverse SSH key state.
+- `capabilities-connections-control/kitchen/samsung-s24-tailscale-access-options-2026-06-14.md` - expanded explanation of Android access options and ADB/scrcpy.

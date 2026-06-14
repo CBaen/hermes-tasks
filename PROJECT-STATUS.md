@@ -1,6 +1,6 @@
 # Hermes Tasks Status
 
-Last updated: 2026-06-14T13:09:00-06:00
+Last updated: 2026-06-14T13:29:12-06:00
 
 ## What this is
 
@@ -103,3 +103,7 @@ Next non-blocked work is to decide how Banebook should open/control the Wardencl
 
 - Banebook and Wardenclyffe are verified for bidirectional SSH over Tailscale. Use lane-gated route records for automated agents on either machine.
 - Samsung S24 appears on Tailscale as `Bane  24Ultra` / `100.75.32.46` / Android, but was offline during inventory. Mobile access is possible only after choosing and setting up a phone-side service.
+## 2026-06-14T13:29:12-06:00 - Reverse SSH hardened and S24 online
+
+- Wardenclyffe -> Banebook reverse SSH key was hardened after explicit approval: restricted to Wardenclyffe Tailscale IPs and no SSH agent/X11/port forwarding; normal command execution still verified.
+- Samsung S24 `Bane  24Ultra` / `100.75.32.46` is online in Tailscale and pingable. Phone access remains discussion-gated until a phone-side service is chosen.

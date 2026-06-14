@@ -10,7 +10,7 @@
 | P0 | wardenclyffe-hermes-always-on | Wardenclyffe owns always-on Hermes gateway/dashboard/scheduled runtime; Banebook remains cockpit | Implemented for fresh install/gateway/dashboard/script-only scheduler, Nous Portal provider auth, free-model default/smokes, and worker dispatch gates; operating backlog remains partially blocked pending separate decisions | current/future Hermes sessions | Gateway active/enabled; dashboard active/enabled behind SSH tunnel; no-agent cron smoke fired; Nous Portal auth verified; default/free-model smoke PASS; `uma-operating-loop` board has three done cards and three blocked cards |
 | P0 | wardenclyffe-worker-lanes | Local-only Wardenclyffe worker-lane rules, named dispatch gates, and smoke proofs | Implemented for v1.1; use gates before further worker dispatch | current/future Hermes sessions | Codex smoke PASS; Nous free-model smoke PASS; lane card done |
 | P0 | wardenclyffe-webui-access | Banebook cockpit access to Wardenclyffe Hermes WebUI | Implemented with localhost-only remote dashboard plus Banebook SSH tunnel/helper/launcher | current/future Hermes sessions | `hermes-dashboard.service` active/enabled; `http://127.0.0.1:9129` loads dashboard from Banebook; card done |
-| P1 | mobile-s24-access | Explore Samsung S24 as Tailscale-accessible mobile edge device | Inventory done; setup blocked on phone being online and user choosing service level | future Hermes session | `Bane  24Ultra` / Android / `100.75.32.46` seen offline on Tailscale at 2026-06-14T13:09:00-06:00 |
+| P1 | mobile-s24-access | Explore Samsung S24 as Tailscale-accessible mobile edge device | Online/reachable; setup blocked on choosing phone-side service level | future Hermes session | `Bane  24Ultra` / Android / `100.75.32.46` online and `tailscale ping` succeeded on 2026-06-14T13:29:12-06:00 |
 
 ## Next
 
@@ -30,6 +30,7 @@
 
 ## Done
 
+- 2026-06-14T13:29:12-06:00: Reverse SSH hardening applied to Wardenclyffe -> Banebook key and verified; Samsung S24 is online/pingable and phone-access explanation expanded.
 - 2026-06-13T13:20:40-06:00: Added Wardenclyffe Uma worker-lane rules v1, documented Codex/Hermes auth boundaries, synced the non-secret lane docs to Wardenclyffe, and ran a bounded Wardenclyffe Codex CLI local-only smoke test. Result: PASS artifact at `artifacts/worker-smoke/wardenclyffe-codex-worker-smoke.md`.
 - 2026-06-13T13:01:08-06:00: Approved and configured Wardenclyffe as the primary always-on Uma/Hermes runtime host. Fresh Hermes installed without copying Banebook secrets/auth/sessions/browser state; gateway user service is enabled/running with linger; `/usr/local/bin/hermes` resolves the launcher for non-interactive SSH; script-only cron smoke fired automatically and removed its one-shot job.
 - 2026-06-13T13:01:08-06:00: Cloned Hermes Tasks and Hermes WebUI on Wardenclyffe, applied the Scheduled Kanban WebUI patch on branch `scheduled-kanban-webui`, and verified syntax, whitespace, targeted Kanban tests (`90 passed`), and isolated real-Hermes scheduled-card smoke.

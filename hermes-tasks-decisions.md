@@ -42,6 +42,22 @@ Rollback / next: Remove/revoke Wardenclyffe Nous credentials only if the user as
 
 Newest entries first.
 
+## 2026-06-14T13:29:12-06:00 - Harden Wardenclyffe reverse SSH while keeping command coordination
+
+Decision: After user approval, restrict the existing Wardenclyffe -> Banebook public key to Wardenclyffe's Tailscale IPv4/IPv6 addresses and disable SSH agent forwarding, X11 forwarding, and port forwarding. Keep normal command execution available.
+
+Reason: The user wants automated agents working across both computers, but the reverse key should not be a general tunneling or forwarding credential. This preserves coordination while narrowing misuse paths.
+
+Evidence: Banebook `authorized_keys` now includes `from="100.109.191.31,fd7a:115c:a1e0::e43a:bf20",no-agent-forwarding,no-X11-forwarding,no-port-forwarding` on the Wardenclyffe handoff key. Wardenclyffe-side verification returned `BANEBOOK`, `guidingl`, and `REVERSE_SSH_HARDENED_PASS`.
+
+## 2026-06-14T13:29:12-06:00 - Discuss Samsung S24 access before choosing ADB/scrcpy or other control
+
+Decision: Treat Samsung S24 access-level choice as a discussion-gated design decision. Do not set up ADB/scrcpy, Termux SSH, KDE Connect notification access, or file sync until the user chooses the intended access level and boundaries.
+
+Reason: The S24 is online in Tailscale, but Tailscale reachability is not phone control. ADB/scrcpy is powerful screen/device control and should not be the default standing access method for autonomous agents.
+
+Evidence: `tailscale ping --timeout=5s --c 3 100.75.32.46` returned pongs via DERP and direct LAN; `capabilities-connections-control/kitchen/samsung-s24-tailscale-access-options-2026-06-14.md` now explains the levels.
+
 ## 2026-06-14T13:09:00-06:00 - Treat Banebook and Wardenclyffe as lane-gated bidirectional agent hosts
 
 Decision: Support automated agents on both Banebook and Wardenclyffe through Tailscale/SSH, but route work through explicit worker lanes, route records, and approval boundaries instead of broad unsupervised cross-machine control.

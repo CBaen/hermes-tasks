@@ -1,5 +1,13 @@
 # Hermes Tasks Handoff
 
+## 2026-06-14T13:29:12-06:00 continuation - reverse SSH hardened and S24 online explained
+
+- User confirmed the Samsung S24 is online in Tailscale and asked for an Uma explanation before choosing phone access level.
+- Verified `Bane  24Ultra` / `100.75.32.46` is online and `tailscale ping` returns pongs via DERP and direct LAN.
+- Expanded `capabilities-connections-control/kitchen/samsung-s24-tailscale-access-options-2026-06-14.md` with plain-English explanations of presence, file sync, KDE Connect, Termux SSH, and ADB/scrcpy.
+- User approved Wardenclyffe -> Banebook SSH hardening. Updated Banebook `/home/guidingl/.ssh/authorized_keys` line for the existing Wardenclyffe key with `from="100.109.191.31,fd7a:115c:a1e0::e43a:bf20",no-agent-forwarding,no-X11-forwarding,no-port-forwarding`.
+- Verification after hardening returned `BANEBOOK`, `guidingl`, and `REVERSE_SSH_HARDENED_PASS`. Backup: `/home/guidingl/.ssh/authorized_keys.bak-wardenclyffe-harden-20260614T132855-0600`.
+
 ## 2026-06-14T13:09:00-06:00 continuation - bidirectional agent and mobile access inventory
 
 - Verified Banebook -> Wardenclyffe SSH and Wardenclyffe -> Banebook SSH live.

@@ -6,8 +6,8 @@ profile: foundation
 level: ingredient
 maturity: candidate
 scope: reverse SSH from Wardenclyffe Kubuntu into Banebook over Tailscale
-currently_true: verified
-last_verified: 2026-06-11
+currently_true: verified and hardened
+last_verified: 2026-06-14
 tags:
   - banebook
   - wardenclyffe
@@ -64,6 +64,36 @@ guidingl
 /home/guidingl/codex-framework/skills/triadic-construction-v2/SKILL.md
 /home/guidingl/codex-framework/skills/triadic-work/SKILL.md
 /home/guidingl/codex-framework/skills/witnessed-work/SKILL.md
+```
+
+## 2026-06-14 hardening
+
+Approved by Guiding Light and applied on 2026-06-14T13:29:12-06:00. The Wardenclyffe public key line in Banebook `authorized_keys` now has these restrictions:
+
+```text
+from="100.109.191.31,fd7a:115c:a1e0::e43a:bf20",no-agent-forwarding,no-X11-forwarding,no-port-forwarding
+```
+
+Practical meaning:
+
+- only Wardenclyffe's current Tailscale IPv4/IPv6 addresses can use this key;
+- the key can still run normal SSH commands into Banebook;
+- the key cannot open SSH tunnels/port forwards;
+- the key cannot forward an SSH agent;
+- the key cannot start X11 GUI forwarding.
+
+Verification after hardening:
+
+```text
+BANEBOOK
+guidingl
+REVERSE_SSH_HARDENED_PASS
+```
+
+Backup made before hardening:
+
+```text
+/home/guidingl/.ssh/authorized_keys.bak-wardenclyffe-harden-20260614T132855-0600
 ```
 
 ## Guardrails
